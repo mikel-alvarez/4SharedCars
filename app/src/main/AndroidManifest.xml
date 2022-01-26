@@ -4,13 +4,32 @@
 
     <application
         android:allowBackup="true"
+        android:name=".app.MyAplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.4SharedCars">
         <activity
-            android:name=".MainActivity"
+            android:name=".activites.EditarUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".activites.AnadirRuta"
+            android:exported="false" />
+        <activity
+            android:name=".activites.OtroUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".activites.DetallesRuta"
+            android:exported="false" />
+        <activity
+            android:name=".activites.PaginaPrincipal"
+            android:exported="false" />
+        <activity
+            android:name=".activites.Registro"
+            android:exported="false" />
+        <activity
+            android:name=".activites.IniciarSesion"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

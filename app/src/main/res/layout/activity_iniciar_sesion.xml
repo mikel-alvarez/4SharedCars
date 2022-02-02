@@ -40,7 +40,7 @@
         android:layout_height="55dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Nombre de Usuario"
         app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -55,12 +55,14 @@
         android:layout_marginTop="96dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:text="Contraseña"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
         android:id="@+id/button"

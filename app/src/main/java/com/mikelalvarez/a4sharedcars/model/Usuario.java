@@ -16,34 +16,38 @@ public class Usuario extends RealmObject {
     private String apellido;
     private String username;
     private String contraseña;
-    private Float puntosC02;
+    private String correo;
+    private Double puntosC02;
     private Integer puntuacionEstrellas;
     private String telefono;
     private Integer imagen;
-    private ArrayList<Usuario> usuariosFavoritos;
-    private ArrayList<Usuario> usuariosVetados;
+    private ArrayList<Integer> usuariosFavoritos;
+    private ArrayList<Integer> usuariosVetados;
 
     public Usuario() {
         inicializar();
     }
 
-    public Usuario(String nombre, String apellido, String username, String contraseña, String telefono, Integer imagen) {
+    public Usuario(String nombre, String apellido, String username, String contraseña, String correo, String telefono, Integer imagen) {
         this.id = MyAplication.idUsuario.incrementAndGet();
         inicializar();
+        this.puntuacionEstrellas = 3;
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
         this.contraseña = contraseña;
+        this.correo = correo;
         this.telefono = telefono;
         this.imagen = imagen;
     }
 
-    public Usuario(int id, String nombre, String apellido, String username, String contraseña, Float puntosC02, Integer puntuacionEstrellas, String telefono, Integer imagen, ArrayList<Usuario> usuariosFavoritos, ArrayList<Usuario> usuariosVetados) {
+    public Usuario(int id, String nombre, String apellido, String username, String contraseña, String correo, Double puntosC02, Integer puntuacionEstrellas, String telefono, Integer imagen, ArrayList<Integer> usuariosFavoritos, ArrayList<Integer> usuariosVetados) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.username = username;
         this.contraseña = contraseña;
+        this.correo = correo;
         this.puntosC02 = puntosC02;
         this.puntuacionEstrellas = puntuacionEstrellas;
         this.telefono = telefono;
@@ -52,19 +56,19 @@ public class Usuario extends RealmObject {
         this.usuariosVetados = usuariosVetados;
     }
     private void inicializar(){
-        this.usuariosFavoritos = new ArrayList<Usuario>();
-        this.usuariosVetados = new ArrayList<Usuario>();
+        this.usuariosFavoritos = new ArrayList<Integer>();
+        this.usuariosVetados = new ArrayList<Integer>();
     }
 
     public int getId() {
         return id;
     }
 
-    public ArrayList<Usuario> getUsuariosFavoritos() {
+    public ArrayList<Integer> getUsuariosFavoritos() {
         return usuariosFavoritos;
     }
 
-    public ArrayList<Usuario> getUsuariosVetados() {
+    public ArrayList<Integer> getUsuariosVetados() {
         return usuariosVetados;
     }
 
@@ -100,11 +104,11 @@ public class Usuario extends RealmObject {
         this.contraseña = contraseña;
     }
 
-    public Float getPuntosC02() {
+    public Double getPuntosC02() {
         return puntosC02;
     }
 
-    public void setPuntosC02(Float puntosC02) {
+    public void setPuntosC02(Double puntosC02) {
         this.puntosC02 = puntosC02;
     }
 
@@ -131,13 +135,13 @@ public class Usuario extends RealmObject {
     public void setImagen(Integer imagen) {
         this.imagen = imagen;
     }
-    public void addFavorito(Usuario favorito){
+    public void addFavorito(Integer favorito){
         this.usuariosFavoritos.add(favorito);
     }
     public void removeFavorito(Usuario favorito){
         this.usuariosFavoritos.remove(favorito);
     }
-    public void addVetado(Usuario vetado){
+    public void addVetado(Integer vetado){
         this.usuariosVetados.add(vetado);
     }
     public void removeVetado(Usuario vetado){

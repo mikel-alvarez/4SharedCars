@@ -7,53 +7,52 @@
     tools:context=".activites.IniciarSesion">
 
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Se me ha olvidado la contraseña"
-        android:textColor="@color/link"
-        android:backgroundTint="@color/icons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.549"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.0" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="274dp"
-        android:layout_height="118dp"
+        android:layout_width="138dp"
+        android:layout_height="73dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.164"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintVertical_bias="0.249"
+        tools:srcCompat="@drawable/icono" />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="310dp"
-        android:layout_height="55dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+    <Button
+        android:id="@+id/btnInciarSesion"
+        android:layout_width="312dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/iniciarsesion"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.474"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenaInicioSesion"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnRegistroIniciarSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/icons"
+        android:text="Registrate en 4SharedCar"
+        android:textColor="@color/link"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnOlvidoContrasenaIniciarSesion"
+        app:layout_constraintVertical_bias="0.146" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/txtContrasenaInicioSesion"
         android:layout_width="309dp"
         android:layout_height="57dp"
         android:layout_marginTop="96dp"
         android:ems="10"
+        android:hint="@string/contrasena"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,30 +62,56 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="312dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="24dp"
-        android:text="Iniciar Sesion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.474"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnOlvidoContrasenaIniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registrate en 4SharedCar"
+        android:layout_marginTop="32dp"
         android:backgroundTint="@color/icons"
+        android:text="Se me ha olvidado la contraseña"
         android:textColor="@color/link"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.551"
+        app:layout_constraintHorizontal_bias="0.549"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.114" />
+        app:layout_constraintTop_toBottomOf="@+id/btnInciarSesion"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/txtNombreUsuarioInicioSesion"
+        android:layout_width="310dp"
+        android:layout_height="55dp"
+        android:ems="10"
+        android:hint="@string/nombreusu"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/txtContrasenaInicioSesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.547" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="229dp"
+        android:layout_height="58dp"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:text="@string/iniciarsesion"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

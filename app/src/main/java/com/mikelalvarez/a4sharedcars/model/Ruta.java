@@ -21,11 +21,13 @@ public class Ruta extends RealmObject {
     @Required
     private String ruta;
 
+    private double kms;
+
     private int plazas;
 
-    private Usuario conductor;
+    private Integer conductor;
 
-    private ArrayList<Usuario> pasajeros;
+    private ArrayList<Integer> pasajeros;
 
 
     public Ruta() {
@@ -33,21 +35,23 @@ public class Ruta extends RealmObject {
         this.inicialicePasajeros();
     }
 
-    public Ruta(Date fecha, String hora, String ruta, int plazas, Usuario conductor) {
+    public Ruta(Date fecha, String hora, String ruta, double kms, int plazas, Integer conductor) {
         this.inicialicePasajeros();
         this.id = MyAplication.idRuta.incrementAndGet();
         this.fecha = fecha;
         this.hora = hora;
         this.ruta = ruta;
+        this.kms = kms;
         this.plazas = plazas;
         this.conductor = conductor;
     }
 
-    public Ruta(int id, Date fecha, String hora, String ruta, int plazas, Usuario conductor, ArrayList<Usuario> pasajeros) {
+    public Ruta(int id, Date fecha, String hora, String ruta,double kms, int plazas, Integer conductor, ArrayList<Integer> pasajeros) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
         this.ruta = ruta;
+        this.kms = kms;
         this.plazas = plazas;
         this.conductor = conductor;
         this.pasajeros = pasajeros;
@@ -77,11 +81,11 @@ public class Ruta extends RealmObject {
         return plazas;
     }
 
-    public Usuario getConductor() {
+    public Integer getConductor() {
         return conductor;
     }
 
-    public ArrayList<Usuario> getPasajeros() {
+    public ArrayList<Integer> getPasajeros() {
         return pasajeros;
     }
 
@@ -101,14 +105,14 @@ public class Ruta extends RealmObject {
         this.plazas = plazas;
     }
 
-    public void setConductor(Usuario conductor) {
+    public void setConductor(Integer conductor) {
         this.conductor = conductor;
     }
-    public void addPasajero(Usuario pasajero){
+    public void addPasajero(Integer pasajero){
         this.pasajeros.add(pasajero);
     }
 
-    public void removePasajero(Usuario pasajero){
+    public void removePasajero(Integer pasajero){
         this.pasajeros.remove(pasajero);
     }
 }

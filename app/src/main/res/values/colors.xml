@@ -9,4 +9,5 @@
     <color name="icons">#FFFFFF</color>
     <color name="divider">#BDBDBD</color>
     <color name="link">#0901FA</color>
+    <color name="cancelar">#FF5760</color>
 </resources>

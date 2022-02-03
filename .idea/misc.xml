@@ -3,12 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_editar_usuario.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_iniciar_sesion.xml" value="0.14010416666666667" />
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/activity_iniciar_sesion.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/activity_pagina_principal.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/activity_registro.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/fragment_ranking.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/fragment_reserva.xml" value="0.1796875" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/fragment_usuario.xml" value="0.22" />
+        <entry key="..\:/Users/Lenovo/Desktop/Pablo_Fernandez/CLASE/2DAM/Prog_Multimedia_Moviles/4SharedCars/app/src/main/res/layout/ruta_item.xml" value="0.22" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_main2.xml" value="0.17083333333333334" />
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_pagina_principal.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/activity_registro.xml" value="0.27447916666666666" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/fragment_ranking.xml" value="0.15677083333333333" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/fragment_reserva.xml" value="0.14375" />
         <entry key="..\:/Users/mikel/AndroidStudioProjects/4SharedCars/app/src/main/res/layout/fragment_usuario.xml" value="0.17083333333333334" />

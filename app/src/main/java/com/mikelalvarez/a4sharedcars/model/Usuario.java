@@ -60,6 +60,14 @@ public class Usuario extends RealmObject {
         this.usuariosVetados = new ArrayList<Integer>();
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     public int getId() {
         return id;
     }

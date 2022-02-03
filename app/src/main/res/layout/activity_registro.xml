@@ -103,7 +103,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
-        android:id="@+id/imgFotoPerfil"
+        android:id="@+id/imgFotoPerfilRegistro"
         android:layout_width="154dp"
         android:layout_height="177dp"
         app:layout_constraintBottom_toBottomOf="parent"

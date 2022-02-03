@@ -2,10 +2,9 @@ package com.mikelalvarez.a4sharedcars.model;
 
 import com.mikelalvarez.a4sharedcars.app.MyAplication;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 import io.realm.annotations.Required;
@@ -27,7 +26,7 @@ public class Ruta extends RealmObject {
 
     private Integer conductor;
 
-    private ArrayList<Integer> pasajeros;
+    private RealmList<Integer> pasajeros;
 
 
     public Ruta() {
@@ -46,7 +45,7 @@ public class Ruta extends RealmObject {
         this.conductor = conductor;
     }
 
-    public Ruta(int id, Date fecha, String hora, String ruta,double kms, int plazas, Integer conductor, ArrayList<Integer> pasajeros) {
+    public Ruta(int id, Date fecha, String hora, String ruta,double kms, int plazas, Integer conductor, RealmList<Integer> pasajeros) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
@@ -58,7 +57,7 @@ public class Ruta extends RealmObject {
     }
 
     private void inicialicePasajeros(){
-        this.pasajeros = new ArrayList<>();
+        this.pasajeros = new RealmList<>();
     }
 
     public int getId() {
@@ -85,7 +84,7 @@ public class Ruta extends RealmObject {
         return conductor;
     }
 
-    public ArrayList<Integer> getPasajeros() {
+    public RealmList<Integer> getPasajeros() {
         return pasajeros;
     }
 

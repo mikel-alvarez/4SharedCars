@@ -2,8 +2,8 @@ package com.mikelalvarez.a4sharedcars.model;
 
 import com.mikelalvarez.a4sharedcars.app.MyAplication;
 
-import java.util.ArrayList;
 
+import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
@@ -21,8 +21,8 @@ public class Usuario extends RealmObject {
     private Integer puntuacionEstrellas;
     private String telefono;
     private Integer imagen;
-    private ArrayList<Integer> usuariosFavoritos;
-    private ArrayList<Integer> usuariosVetados;
+    private RealmList<Integer> usuariosFavoritos;
+    private RealmList<Integer> usuariosVetados;
 
     public Usuario() {
         inicializar();
@@ -41,7 +41,7 @@ public class Usuario extends RealmObject {
         this.imagen = imagen;
     }
 
-    public Usuario(int id, String nombre, String apellido, String username, String contraseña, String correo, Double puntosC02, Integer puntuacionEstrellas, String telefono, Integer imagen, ArrayList<Integer> usuariosFavoritos, ArrayList<Integer> usuariosVetados) {
+    public Usuario(int id, String nombre, String apellido, String username, String contraseña, String correo, Double puntosC02, Integer puntuacionEstrellas, String telefono, Integer imagen, RealmList<Integer> usuariosFavoritos, RealmList<Integer> usuariosVetados) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -56,19 +56,19 @@ public class Usuario extends RealmObject {
         this.usuariosVetados = usuariosVetados;
     }
     private void inicializar(){
-        this.usuariosFavoritos = new ArrayList<Integer>();
-        this.usuariosVetados = new ArrayList<Integer>();
+        this.usuariosFavoritos = new RealmList<Integer>();
+        this.usuariosVetados = new RealmList<Integer>();
     }
 
     public int getId() {
         return id;
     }
 
-    public ArrayList<Integer> getUsuariosFavoritos() {
+    public RealmList<Integer> getUsuariosFavoritos() {
         return usuariosFavoritos;
     }
 
-    public ArrayList<Integer> getUsuariosVetados() {
+    public RealmList<Integer> getUsuariosVetados() {
         return usuariosVetados;
     }
 

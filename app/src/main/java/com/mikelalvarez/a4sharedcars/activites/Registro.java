@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class Registro extends AppCompatActivity {
 
@@ -66,6 +67,8 @@ public class Registro extends AppCompatActivity {
         btnAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                RealmResults<Usuario> usuarios = realm.where(Usuario.class).findAll();
                 if (txtNombre.getText().toString().isEmpty()){
                     Toast.makeText(Registro.this, "El nombre esta vacio", Toast.LENGTH_SHORT).show();
                     return;
@@ -77,6 +80,9 @@ public class Registro extends AppCompatActivity {
                 if (txtNombreUsu.getText().toString().isEmpty()){
                     Toast.makeText(Registro.this, "El nombre de usuario esta vacio", Toast.LENGTH_SHORT).show();
                     return;
+                }
+                if (realm.where(Usuario.class).containsValue("username",txtNombreUsu.getText().toString()).findFirst() != null){
+                    Toast.makeText(Registro.this, "Ya existe ese usuario", Toast.LENGTH_SHORT).show();
                 }
                 if (txtCorreo.getText().toString().isEmpty()){
                     Toast.makeText(Registro.this, "El correo esta vacio", Toast.LENGTH_SHORT).show();

@@ -3,6 +3,8 @@ package com.mikelalvarez.a4sharedcars.model;
 import com.mikelalvarez.a4sharedcars.app.MyAplication;
 
 
+import java.util.Objects;
+
 import io.realm.RealmList;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -26,6 +28,19 @@ public class Usuario extends RealmObject {
 
     public Usuario() {
         inicializar();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(username, usuario.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username);
     }
 
     public Usuario(String nombre, String apellido, String username, String contraseña, String correo, String telefono, Integer imagen) {

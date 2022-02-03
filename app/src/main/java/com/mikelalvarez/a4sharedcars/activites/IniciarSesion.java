@@ -54,12 +54,19 @@ public class IniciarSesion extends AppCompatActivity {
                     Toast.makeText(IniciarSesion.this, "El usuario esta vacio", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Usuario usuario = realm.where(Usuario.class).containsValue("username",txtUsuario.getText().toString()).containsValue("contraseña",txtContrasena.getText().toString()).findFirst();
-                
+                Usuario usuario = realm.where(Usuario.class).containsValue("username",txtUsuario.getText().toString()).findFirst();
+
                 if (usuario == null){
-                    Toast.makeText(IniciarSesion.this, "Usuario o Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(IniciarSesion.this, "Usuario incorrecta", Toast.LENGTH_SHORT).show();
                     return;
                 }
+
+                if (usuario.getContraseña().equals(txtContrasena.getText().toString())){
+                    Toast.makeText(IniciarSesion.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                
+
                 
                 paginaPrincipal.putExtra("UserId",usuario.getId());
                 startActivity(paginaPrincipal);

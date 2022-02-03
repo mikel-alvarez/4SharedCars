@@ -76,6 +76,14 @@ public class Ruta extends RealmObject {
         return ruta;
     }
 
+    public double getKms() {
+        return kms;
+    }
+
+    public void setKms(double kms) {
+        this.kms = kms;
+    }
+
     public int getPlazas() {
         return plazas;
     }

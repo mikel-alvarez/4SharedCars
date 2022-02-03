@@ -92,16 +92,18 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="229dp"
-        android:layout_height="58dp"
+        android:layout_width="288dp"
+        android:layout_height="60dp"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textSize="48sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.611" />
 
     <TextView
         android:id="@+id/textView2"

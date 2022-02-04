@@ -1,15 +1,50 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import io.realm.Realm;
 
 public class OtroUsuario extends AppCompatActivity {
+    Realm realm;
+    ImageView foto;
+    TextView nombre;
+    TextView username;
+    TextView apellido;
+    TextView puntos;
+    RecyclerView recyclerview;
+    Button volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otro_usuario);
+        realm = Realm.getDefaultInstance();
+        Bundle bundle = getIntent().getExtras();
+        Integer id = bundle.getInt("idOtroUsuario");
+
+        Usuario usuario = realm.where(Usuario.class).equalTo("id",id).findFirst();
+
+        nombre = (TextView) findViewById(R.id.txtNombreOtroUsuario);
+        apellido = (TextView) findViewById(R.id.txtApellidoOtroUsuario);
+        username = (TextView) findViewById(R.id.txtNombreUsuarioOtroUsuario);
+        puntos = (TextView) findViewById(R.id.txtPuntosOtroUsuario);
+        volver = (Button) findViewById(R.id.btnVolverOtroUsuario);
+        foto = (ImageView) findViewById(R.id.imgFotoOtroUsuario);
+        recyclerview = (RecyclerView) findViewById(R.id.recyclerViewOtroUsuario);
+
+        nombre.setText(usuario.getNombre());
+        apellido.setText(usuario.getApellido());
+        username.setText(usuario.getUsername());
+        puntos.setText(usuario.getPuntosC02().toString());
+        foto.setImageResource(usuario.getImagen());
     }
 }

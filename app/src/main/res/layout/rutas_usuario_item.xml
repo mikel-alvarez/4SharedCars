@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtRutaUsuarioItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ruta " />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioFechaItem"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Fecha" />
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioHoraItem"
+            android:layout_width="163dp"
+            android:layout_height="wrap_content"
+            android:text="Hora" />
+
+        <Button
+            android:id="@+id/btnModificarRuta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editar" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioKmsItem"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Kilómetros" />
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioPlazasItem"
+            android:layout_width="272dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Plazas" />
+
+        <Button
+            android:id="@+id/btnEliminarRuta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Eliminar" />
+    </LinearLayout>
+
+</LinearLayout>

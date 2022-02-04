@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -16,29 +17,37 @@ import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import java.sql.BatchUpdateException;
 import java.util.List;
 
+import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapter.RutaHolder>{
 
     private RealmResults<Ruta> rutaData;
-    private AdapterView.OnItemClickListener itemListener;
+    private OnItemClickListener itemListener;
+    private Realm realm;
+    private OnItemClickListener buttomListener;
 
-    public RutaRecyclerAdapter(RealmResults<Ruta> listData, AdapterView.OnItemClickListener listener) {
+    public RutaRecyclerAdapter(RealmResults<Ruta> listData, OnItemClickListener listener,OnItemClickListener buttomListener) {
         this.rutaData = listData;
         this.itemListener = listener;
+        this.buttomListener = buttomListener;
     }
 
     @Override
     public RutaHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ruta_item, parent, false);
+        realm = Realm.getDefaultInstance();
         return new RutaHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RutaHolder holder, int position) {
-        holder.assignData(rutaData.get(position), itemListener);
+        Ruta ruta = rutaData.get(position);
+        Usuario usuario = realm.where(Usuario.class).equalTo("id",ruta.getConductor()).findFirst();
+        holder.assignData(ruta,usuario, itemListener,buttomListener);
     }
 
     @Override
@@ -54,6 +63,7 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
         private TextView horaSalida;
         private TextView ruta;
         private TextView huecosLibres;
+        private Button btnReservar;
 
         public RutaHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,9 +74,10 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
             this.horaSalida = (TextView) itemView.findViewById(R.id.txtHoraSalidaItem);
             this.ruta = (TextView) itemView.findViewById(R.id.txtRutaItem);
             this.huecosLibres = (TextView) itemView.findViewById(R.id.txtHuecosLibresItem);
+            this.btnReservar = (Button) itemView.findViewById(R.id.btnReservaItem);
         }
 
-        private void assignData(@NonNull final Ruta route, @NonNull final Usuario user, final AdapterView.OnItemClickListener listener) {
+        private void assignData(@NonNull final Ruta route, @NonNull final Usuario user, final OnItemClickListener listener, final  OnItemClickListener buttonListener) {
 
             fotoPerfil.setImageResource(user.getImagen());
             nombre.setText(user.getNombre());
@@ -76,10 +87,17 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
             ruta.setText(route.getRuta());
             huecosLibres.setText(route.getPlazas() - route.getPasajeros().size() + 1);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            fotoPerfil.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(route, user, getAdapterPosition());
+                    listener.onItemClick(route, user);
+                }
+            });
+
+            btnReservar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    buttonListener.onItemClick(route,user);
                 }
             });
 
@@ -87,6 +105,6 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
     }
 
     public interface OnItemClickListener{
-        public void onItemClick(Ruta ruta, Usuario usuario, int position);
+        public void onItemClick(Ruta ruta, Usuario usuario);
     }
 }

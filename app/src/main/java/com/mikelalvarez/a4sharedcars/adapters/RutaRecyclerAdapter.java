@@ -30,9 +30,9 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
     private Realm realm;
     private OnItemClickListener buttomListener;
 
-    public RutaRecyclerAdapter(RealmResults<Ruta> listData, OnItemClickListener listener,OnItemClickListener buttomListener) {
+    public RutaRecyclerAdapter(RealmResults<Ruta> listData, OnItemClickListener imgListener,OnItemClickListener buttomListener) {
         this.rutaData = listData;
-        this.itemListener = listener;
+        this.itemListener = imgListener;
         this.buttomListener = buttomListener;
     }
 
@@ -105,6 +105,6 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
     }
 
     public interface OnItemClickListener{
-        public void onItemClick(Ruta ruta, Usuario usuario);
+        public void onItemClick(Ruta ruta, Usuario conductor);
     }
 }

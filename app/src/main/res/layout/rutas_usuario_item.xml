@@ -23,13 +23,13 @@
 
         <TextView
             android:id="@+id/txtRutaUsuarioHoraItem"
-            android:layout_width="163dp"
+            android:layout_width="202dp"
             android:layout_height="wrap_content"
             android:text="Hora" />
 
         <Button
             android:id="@+id/btnModificarRuta"
-            android:layout_width="wrap_content"
+            android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Editar" />
@@ -50,7 +50,7 @@
 
         <TextView
             android:id="@+id/txtRutaUsuarioPlazasItem"
-            android:layout_width="272dp"
+            android:layout_width="108dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Plazas" />

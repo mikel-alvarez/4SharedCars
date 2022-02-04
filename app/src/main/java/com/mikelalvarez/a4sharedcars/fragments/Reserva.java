@@ -46,8 +46,8 @@ public class Reserva extends Fragment {
         return view;
     }
 
-    public void getData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener itemClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
-        RutaRecyclerAdapter rutaRecyclerAdapter = new RutaRecyclerAdapter(rutas,itemClickListener,buttomListener);
+    public void getData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener imgClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
+        RutaRecyclerAdapter rutaRecyclerAdapter = new RutaRecyclerAdapter(rutas,imgClickListener,buttomListener);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false)));
         recyclerView.setAdapter(rutaRecyclerAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.HORIZONTAL);

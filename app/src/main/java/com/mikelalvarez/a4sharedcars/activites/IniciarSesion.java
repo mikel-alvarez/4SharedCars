@@ -10,7 +10,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
+import com.mikelalvarez.a4sharedcars.utils.Utils;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -31,6 +33,8 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
 
+
+
         txtContrasena = findViewById(R.id.txtContrasenaInicioSesion);
         txtUsuario = findViewById(R.id.txtNombreUsuarioInicioSesion);
         btnIniciarSesion = findViewById(R.id.btnInciarSesion);
@@ -42,6 +46,12 @@ public class IniciarSesion extends AppCompatActivity {
 
         realm = Realm.getDefaultInstance();
 
+        if (realm.where(Usuario.class).findAll().isEmpty()){
+            Utils.inicializarBaseDatosUsuario();
+        }
+        if (realm.where(Ruta.class).findAll().isEmpty()){
+            Utils.inicializarBaseDatosRuta();
+        }
 
         btnIniciarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +64,7 @@ public class IniciarSesion extends AppCompatActivity {
                     Toast.makeText(IniciarSesion.this, "El usuario esta vacio", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Usuario usuario = realm.where(Usuario.class).containsValue("username",txtUsuario.getText().toString()).findFirst();
+                Usuario usuario = realm.where(Usuario.class).equalTo("username",txtUsuario.getText().toString()).findFirst();
 
                 if (usuario == null){
                     Toast.makeText(IniciarSesion.this, "Usuario incorrecta", Toast.LENGTH_SHORT).show();

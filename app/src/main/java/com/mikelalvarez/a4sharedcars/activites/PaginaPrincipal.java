@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.adapters.RankingRecycleAdapter;
 import com.mikelalvarez.a4sharedcars.adapters.RutaRecyclerAdapter;
 import com.mikelalvarez.a4sharedcars.adapters.TabsAdapter;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
@@ -49,8 +50,17 @@ public class PaginaPrincipal extends AppCompatActivity {
         RutaRecyclerAdapter.OnItemClickListener registroImgListener = new RutaRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ruta ruta, Usuario conductor) {
-                otroUsuario.putExtra("idConductor",conductor.getId());
+                otroUsuario.putExtra("idOtroUser",conductor.getId());
                 otroUsuario.putExtra("idLogIn",userLogeado.getId());
+                startActivity(otroUsuario);
+            }
+        };
+
+        RankingRecycleAdapter.OnItemClickListener rankingImgClick = new RankingRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Usuario user) {
+                otroUsuario.putExtra("idOtroUser",user.getId());
+                otroUsuario.putExtra("idLogIn",user.getId());
                 startActivity(otroUsuario);
             }
         };
@@ -74,7 +84,7 @@ public class PaginaPrincipal extends AppCompatActivity {
             }
         };
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        myTabsAdapter = new TabsAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),realm,registroImgListener,registroBtnListener);
+        myTabsAdapter = new TabsAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),realm,registroImgListener,registroBtnListener,rankingImgClick);
         viewPager.setAdapter(myTabsAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 

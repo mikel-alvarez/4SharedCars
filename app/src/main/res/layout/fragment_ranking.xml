@@ -6,15 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Ranking">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RANKING"
-        android:textSize="36sp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewRanking"
+        android:layout_width="385dp"
+        android:layout_height="699dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

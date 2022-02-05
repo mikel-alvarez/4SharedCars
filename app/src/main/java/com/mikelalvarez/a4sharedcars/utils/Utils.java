@@ -8,9 +8,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 
-public class Utils {
+public  class  Utils {
 
     public static ArrayList<Usuario> getUsuarios() {
         return new ArrayList<Usuario>() {{
@@ -44,4 +45,21 @@ public class Utils {
     }
 
    // public Integer mediaEstrellas()
+
+    public static void inicializarBaseDatosRuta(){
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+        realm.delete(Ruta.class);
+        realm.copyToRealm(getRutas());
+        realm.commitTransaction();
+    }
+    public static void inicializarBaseDatosUsuario(){
+        Realm realm = Realm.getDefaultInstance();
+
+        realm.beginTransaction();
+        realm.delete(Usuario.class);
+        realm.copyToRealm(getUsuarios());
+        realm.commitTransaction();
+    }
 }

@@ -9,6 +9,7 @@ import com.mikelalvarez.a4sharedcars.fragments.MiUsuario;
 import com.mikelalvarez.a4sharedcars.fragments.Ranking;
 import com.mikelalvarez.a4sharedcars.fragments.Reserva;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
+import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 import io.realm.Realm;
 
@@ -18,13 +19,15 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     private Realm realm;
     private RutaRecyclerAdapter.OnItemClickListener reservaImgClick;
     private RutaRecyclerAdapter.OnItemClickListener reservaBtnClick;
+    private RankingRecycleAdapter.OnItemClickListener rankingImgClick;
 
-    public TabsAdapter(@NonNull FragmentManager fm, int behavior, Realm realm, RutaRecyclerAdapter.OnItemClickListener reservaImgClick, RutaRecyclerAdapter.OnItemClickListener reservaButtonClick) {
+    public TabsAdapter(@NonNull FragmentManager fm, int behavior, Realm realm, RutaRecyclerAdapter.OnItemClickListener reservaImgClick, RutaRecyclerAdapter.OnItemClickListener reservaButtonClick, RankingRecycleAdapter.OnItemClickListener rankingImgClick) {
         super(fm, behavior);
         this.numberOfTabs = behavior;
         this.realm = realm;
         this.reservaImgClick = reservaImgClick;
         this.reservaBtnClick = reservaButtonClick;
+        this.rankingImgClick = rankingImgClick;
     }
 
     @NonNull
@@ -38,10 +41,12 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
             case 1:{
                 Reserva reserva = new Reserva();
                 reserva.getData(realm.where(Ruta.class).findAll(),reservaImgClick,reservaBtnClick);
-                return new Reserva();
+                return reserva;
             }
             case 2:{
-                return new Ranking();
+                Ranking ranking = new Ranking();
+                ranking.getData(realm.where(Usuario.class).findAll(),rankingImgClick);
+                return ranking;
             }
             default:return null;
         }

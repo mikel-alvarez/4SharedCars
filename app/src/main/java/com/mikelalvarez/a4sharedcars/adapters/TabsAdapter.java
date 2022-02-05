@@ -35,7 +35,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:{
-
+                //TODO implementar el get data como en los otros fragments
                 return new MiUsuario();
             }
             case 1:{

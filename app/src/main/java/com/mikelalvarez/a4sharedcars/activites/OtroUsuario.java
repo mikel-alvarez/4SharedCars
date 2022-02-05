@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.adapters.RutaOtroUsuarioAdapter;
+import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 import android.os.Bundle;
@@ -12,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import io.realm.Realm;
+import io.realm.RealmQuery;
+import io.realm.RealmResults;
 
 public class OtroUsuario extends AppCompatActivity {
     Realm realm;
@@ -32,6 +36,7 @@ public class OtroUsuario extends AppCompatActivity {
         Integer id = bundle.getInt("idOtroUsuario");
 
         Usuario usuario = realm.where(Usuario.class).equalTo("id",id).findFirst();
+        RealmResults<Ruta> rutas = realm.where(Ruta.class).equalTo("conductor", id).findAll();
 
         nombre = (TextView) findViewById(R.id.txtNombreOtroUsuario);
         apellido = (TextView) findViewById(R.id.txtApellidoOtroUsuario);
@@ -40,6 +45,9 @@ public class OtroUsuario extends AppCompatActivity {
         volver = (Button) findViewById(R.id.btnVolverOtroUsuario);
         foto = (ImageView) findViewById(R.id.imgFotoOtroUsuario);
         recyclerview = (RecyclerView) findViewById(R.id.recyclerViewOtroUsuario);
+        RutaOtroUsuarioAdapter adapter = new RutaOtroUsuarioAdapter(rutas);
+
+        recyclerview.setAdapter(adapter);
 
         nombre.setText(usuario.getNombre());
         apellido.setText(usuario.getApellido());

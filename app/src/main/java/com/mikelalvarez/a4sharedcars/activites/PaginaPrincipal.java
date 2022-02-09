@@ -24,6 +24,8 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import java.security.Principal;
+
 import io.realm.Realm;
 
 public class PaginaPrincipal extends AppCompatActivity {
@@ -52,8 +54,8 @@ public class PaginaPrincipal extends AppCompatActivity {
         otroUsuario = new Intent(this,OtroUsuario.class);
 
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        tabLayout.addTab(tabLayout.newTab().setText("USUARIO"));
         tabLayout.addTab(tabLayout.newTab().setText("RESERVAR"));
+        tabLayout.addTab(tabLayout.newTab().setText("USUARIO"));
         tabLayout.addTab(tabLayout.newTab().setText("RANKING"));
 
         RutaRecyclerAdapter.OnItemClickListener registroImgListener = new RutaRecyclerAdapter.OnItemClickListener() {
@@ -88,7 +90,7 @@ public class PaginaPrincipal extends AppCompatActivity {
                     Toast.makeText(PaginaPrincipal.this, "Ya estas dentro", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ruta.addPasajero(userLogeado.getId());
+                ruta.addPasajero(userLogeado.getId(), PaginaPrincipal.this);
                 Toast.makeText(PaginaPrincipal.this, "Te has unido setisfatoriamente", Toast.LENGTH_SHORT).show();
             }
         };
@@ -102,7 +104,6 @@ public class PaginaPrincipal extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
-
             }
 
             @Override
@@ -157,4 +158,5 @@ public class PaginaPrincipal extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
 }

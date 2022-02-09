@@ -7,60 +7,80 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.model.Usuario;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MiUsuario#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class MiUsuario extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    View view;
+    TextView lblNombre;
+    TextView lblApellido;
+    TextView lblNombreUsuario;
+    TextView lblCorreo;
+    TextView lblTelefono;
+    TextView lblPunto;
+    ImageView imgAvatar;
+    Button btnGestion;
+    Button  btnEditar;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public MiUsuario() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Usuario.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MiUsuario newInstance(String param1, String param2) {
-        MiUsuario fragment = new MiUsuario();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_usuario, container, false);
+        view = inflater.inflate(R.layout.fragment_usuario, container, false);
+
+        lblApellido = view.findViewById(R.id.txtNombreUsuario);
+        lblNombre = view.findViewById(R.id.txtApellidoUsuario);
+        lblCorreo = view.findViewById(R.id.txtCorreoUsuario);
+        lblNombreUsuario = view.findViewById(R.id.txtNombreUsuarioDeUsuario);
+        lblTelefono = view.findViewById(R.id.txtTelefonoUsuario);
+        lblPunto = view.findViewById(R.id.txtPuntosCo2Usuario);
+        imgAvatar = view.findViewById(R.id.imgPerfilUsuario);
+
+        btnEditar = view.findViewById(R.id.btnEditarUsuario);
+        btnGestion = view.findViewById(R.id.btnGestionarRutas);
+
+        return view;
+    }
+
+    public void getData(Usuario user, OnButtonClick btnGestionClick,OnButtonClick btnEditarClick){
+
+        lblNombre.setText(user.getNombre());
+        lblApellido.setText(user.getApellido());
+        lblNombreUsuario.setText(user.getUsername());
+        lblCorreo.setText(user.getCorreo());
+        lblTelefono.setText(user.getTelefono());
+        lblPunto.setText(user.getPuntosC02().toString());
+
+        imgAvatar.setImageResource(user.getImagen());
+
+        btnGestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnGestionClick.onItemClick(user);
+            }
+        });
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                btnEditarClick.onItemClick(user);
+            }
+        });
+    }
+
+    public interface OnButtonClick{
+        void onItemClick(Usuario user);
     }
 }

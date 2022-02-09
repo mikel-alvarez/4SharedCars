@@ -71,15 +71,15 @@ public class IniciarSesion extends AppCompatActivity {
                     return;
                 }
 
-                if (usuario.getContraseña().equals(txtContrasena.getText().toString())){
-                    Toast.makeText(IniciarSesion.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                
+               if (!usuario.getContraseña().equals(txtContrasena.getText().toString())){
+                  Toast.makeText(IniciarSesion.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                   return;
+              }
 
-                
-                paginaPrincipal.putExtra("UserId",usuario.getId());
-                startActivity(paginaPrincipal);
+
+
+              paginaPrincipal.putExtra("UserId",usuario.getId());
+              startActivity(paginaPrincipal);
             }
         });
         

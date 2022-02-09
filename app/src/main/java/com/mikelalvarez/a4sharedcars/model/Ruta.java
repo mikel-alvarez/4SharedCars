@@ -1,5 +1,12 @@
 package com.mikelalvarez.a4sharedcars.model;
 
+import android.content.Context;
+import android.view.View;
+import android.widget.Toast;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.mikelalvarez.a4sharedcars.adapters.RutaRecyclerAdapter;
 import com.mikelalvarez.a4sharedcars.app.MyAplication;
 
 import java.util.Date;
@@ -115,7 +122,11 @@ public class Ruta extends RealmObject {
     public void setConductor(Integer conductor) {
         this.conductor = conductor;
     }
-    public void addPasajero(Integer pasajero){
+    public void addPasajero(Integer pasajero, Context view){
+        if (pasajeros.size() > plazas - 1){
+            Toast.makeText(view, "No cabe mas personas", Toast.LENGTH_SHORT).show();
+            return;
+        }
         this.pasajeros.add(pasajero);
     }
 

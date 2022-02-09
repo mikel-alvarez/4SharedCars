@@ -35,18 +35,13 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:{
-                //TODO implementar el get data como en los otros fragments
-                return new MiUsuario();
+                return new Reserva();
             }
             case 1:{
-                Reserva reserva = new Reserva();
-                reserva.getData(realm.where(Ruta.class).findAll(),reservaImgClick,reservaBtnClick);
-                return reserva;
+                return new MiUsuario();
             }
             case 2:{
-                Ranking ranking = new Ranking();
-                ranking.getData(realm.where(Usuario.class).findAll(),rankingImgClick);
-                return ranking;
+                return new Ranking();
             }
             default:return null;
         }

@@ -104,6 +104,7 @@ public class PaginaPrincipal extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 viewPager.setCurrentItem(position);
+
             }
 
             @Override

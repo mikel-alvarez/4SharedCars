@@ -9,23 +9,27 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        android:layout_width="409dp"
-        android:layout_height="77dp"
-        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:layout_alignParentBottom="false"
+        android:layout_marginTop="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="657dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
-        android:layout_width="411dp"
-        android:layout_height="657dp"
+        android:layout_width="414dp"
+        android:layout_height="660dp"
         android:layout_above="@id/tabLayout"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentTop="false"
+        android:layout_marginTop="3dp"
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck,SpeakableTextPresentCheck"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="0dp">
 
     </androidx.viewpager.widget.ViewPager>
 

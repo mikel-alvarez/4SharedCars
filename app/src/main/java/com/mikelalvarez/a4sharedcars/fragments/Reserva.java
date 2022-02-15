@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,15 +25,24 @@ public class Reserva extends Fragment {
 
     RecyclerView recyclerView;
     View view;
+    RealmResults<Ruta> rutas;
+    RutaRecyclerAdapter.OnItemClickListener imgClickListener;
+    RutaRecyclerAdapter.OnItemClickListener buttomListener;
 
     public Reserva() {
         // Required empty public constructor
     }
 
 
+
+
+
+
     @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
+    public void onStart() {
+        super.onStart();
+        getData(rutas,imgClickListener,buttomListener);
+
     }
 
     @Override
@@ -43,10 +53,17 @@ public class Reserva extends Fragment {
 
         recyclerView = view.findViewById(R.id.reservaRecycler);
 
+
+
         return view;
     }
 
     public void getData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener imgClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
+        this.rutas = rutas;
+        this.imgClickListener = imgClickListener;
+        this.buttomListener = buttomListener;
+    }
+    private void putData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener imgClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
         RutaRecyclerAdapter rutaRecyclerAdapter = new RutaRecyclerAdapter(rutas,imgClickListener,buttomListener);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false)));
         recyclerView.setAdapter(rutaRecyclerAdapter);

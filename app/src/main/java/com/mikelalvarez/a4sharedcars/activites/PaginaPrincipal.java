@@ -8,6 +8,9 @@ import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.adapters.RankingRecycleAdapter;
 import com.mikelalvarez.a4sharedcars.adapters.RutaRecyclerAdapter;
 import com.mikelalvarez.a4sharedcars.adapters.TabsAdapter;
+import com.mikelalvarez.a4sharedcars.fragments.MiUsuario;
+import com.mikelalvarez.a4sharedcars.fragments.Ranking;
+import com.mikelalvarez.a4sharedcars.fragments.Reserva;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
@@ -27,6 +30,7 @@ import android.widget.Toast;
 import java.security.Principal;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class PaginaPrincipal extends AppCompatActivity {
 
@@ -37,6 +41,8 @@ public class PaginaPrincipal extends AppCompatActivity {
     Usuario userLogeado;
     Intent otroUsuario;
     Bundle bundle;
+    RealmResults<Ruta> rutas;
+    Bundle todoDatos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,8 @@ public class PaginaPrincipal extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
 
         userLogeado = realm.where(Usuario.class).equalTo("id",bundle.getInt("UserId")).findFirst();
+
+        rutas = realm.where(Ruta.class).findAll();
 
         otroUsuario = new Intent(this,OtroUsuario.class);
 
@@ -94,8 +102,10 @@ public class PaginaPrincipal extends AppCompatActivity {
                 Toast.makeText(PaginaPrincipal.this, "Te has unido setisfatoriamente", Toast.LENGTH_SHORT).show();
             }
         };
+
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        myTabsAdapter = new TabsAdapter(getSupportFragmentManager(),tabLayout.getTabCount(),realm,registroImgListener,registroBtnListener,rankingImgClick);
+        myTabsAdapter = new TabsAdapter(getSupportFragmentManager(),tabLayout.getTabCount());
+
         viewPager.setAdapter(myTabsAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -103,7 +113,12 @@ public class PaginaPrincipal extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
+
                 viewPager.setCurrentItem(position);
+                if (tab.getPosition() == 0){
+                    myTabsAdapter.setFragmentReserva(rutas,registroImgListener,registroBtnListener);
+
+                }
 
             }
 
@@ -159,5 +174,8 @@ public class PaginaPrincipal extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+
+
 
 }

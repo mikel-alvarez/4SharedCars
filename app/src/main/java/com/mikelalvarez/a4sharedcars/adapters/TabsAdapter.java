@@ -1,5 +1,7 @@
 package com.mikelalvarez.a4sharedcars.adapters;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,22 +14,22 @@ import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 import io.realm.Realm;
+import io.realm.RealmResults;
 
 public class TabsAdapter extends FragmentStatePagerAdapter {
 
     private int numberOfTabs;
-    private Realm realm;
-    private RutaRecyclerAdapter.OnItemClickListener reservaImgClick;
-    private RutaRecyclerAdapter.OnItemClickListener reservaBtnClick;
-    private RankingRecycleAdapter.OnItemClickListener rankingImgClick;
 
-    public TabsAdapter(@NonNull FragmentManager fm, int behavior, Realm realm, RutaRecyclerAdapter.OnItemClickListener reservaImgClick, RutaRecyclerAdapter.OnItemClickListener reservaButtonClick, RankingRecycleAdapter.OnItemClickListener rankingImgClick) {
+    public TabsAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
         this.numberOfTabs = behavior;
-        this.realm = realm;
-        this.reservaImgClick = reservaImgClick;
-        this.reservaBtnClick = reservaButtonClick;
-        this.rankingImgClick = rankingImgClick;
+
+    }
+
+    public void setFragmentReserva(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener reservaImgClickListener, RutaRecyclerAdapter.OnItemClickListener reservaButtomListener){
+
+        Reserva reserva = (Reserva) getItem(0);
+        reserva.getData(rutas,reservaImgClickListener,reservaButtomListener);
     }
 
     @NonNull

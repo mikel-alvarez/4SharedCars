@@ -35,7 +35,7 @@ public class Reserva extends Fragment {
     RutaRecyclerAdapter.OnItemClickListener registroImgListener;
     RutaRecyclerAdapter.OnItemClickListener registroBtnListener;
     Realm realm;
-
+    int userLogeadoId;
     public Reserva() {
         // Required empty public constructor
     }
@@ -59,6 +59,7 @@ public class Reserva extends Fragment {
 
         recyclerView = view.findViewById(R.id.reservaRecycler);
 
+
         realm = Realm.getDefaultInstance();
 
         rutas = realm.where(Ruta.class).findAll();
@@ -68,26 +69,28 @@ public class Reserva extends Fragment {
             public void onItemClick(Ruta ruta, Usuario conductor) {
                 Intent otroUsuario = new Intent(view.getContext(), OtroUsuario.class);
                 otroUsuario.putExtra("idOtroUsuario",conductor.getId());
-                //otroUsuario.putExtra("idLogIn",userLogeado.getId());
+                otroUsuario.putExtra("idLogIn",userLogeadoId);
                 startActivity(otroUsuario);
             }
         };
         registroBtnListener = new RutaRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Ruta ruta, Usuario conductor) {
-             /**   if (conductor.getId() == userLogeado.getId()){
+                if (conductor.getId() == userLogeadoId){
                     Toast.makeText(view.getContext(), "No puedes unirte a tu propia ruta", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (conductor.getUsuariosVetados().contains(userLogeado.getId())){
+                if (conductor.getUsuariosVetados().contains(userLogeadoId)){
                     Toast.makeText(view.getContext(), "El conductor te tiene vetado", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (ruta.getPasajeros().contains(userLogeado.getId())){
+                if (ruta.getPasajeros().contains(userLogeadoId)){
                     Toast.makeText(view.getContext(), "Ya estas dentro", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                ruta.addPasajero(userLogeado.getId(), view);*/
+                realm.beginTransaction();
+                ruta.addPasajero(userLogeadoId, view.getContext());
+                realm.commitTransaction();
                 Toast.makeText(view.getContext(), "Te has unido setisfatoriamente", Toast.LENGTH_SHORT).show();
             }
         };
@@ -105,5 +108,8 @@ public class Reserva extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.HORIZONTAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         rutaRecyclerAdapter.notifyDataSetChanged();
+    }
+    public void idUserLogeado(int id){
+        userLogeadoId = id;
     }
 }

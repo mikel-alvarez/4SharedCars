@@ -79,6 +79,7 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
 
         private void assignData(@NonNull final Ruta route, @NonNull final Usuario user, final OnItemClickListener listener, final  OnItemClickListener buttonListener) {
 
+
             fotoPerfil.setImageResource(user.getImagen());
             nombre.setText(user.getNombre());
             apellido.setText(user.getApellido());

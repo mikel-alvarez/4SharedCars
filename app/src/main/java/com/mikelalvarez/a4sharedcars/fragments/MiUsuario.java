@@ -1,5 +1,6 @@
 package com.mikelalvarez.a4sharedcars.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.activites.EditarUsuario;
+import com.mikelalvarez.a4sharedcars.activites.GestionarRutas;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 
@@ -28,7 +31,9 @@ public class MiUsuario extends Fragment {
     Button btnGestion;
     Button  btnEditar;
 
-
+    Usuario usuarioLogeado;
+    OnButtonClick btnGestionClick;
+    OnButtonClick btnEditarClick;
     public MiUsuario() {
         // Required empty public constructor
     }
@@ -52,8 +57,11 @@ public class MiUsuario extends Fragment {
         btnEditar = view.findViewById(R.id.btnEditarUsuario);
         btnGestion = view.findViewById(R.id.btnGestionarRutas);
 
+
         return view;
     }
+
+
 
     public void getData(Usuario user, OnButtonClick btnGestionClick,OnButtonClick btnEditarClick){
 
@@ -82,5 +90,24 @@ public class MiUsuario extends Fragment {
 
     public interface OnButtonClick{
         void onItemClick(Usuario user);
+    }
+
+    public void getUsuarioLogeado(Usuario usuario){
+        usuarioLogeado = usuario;
+        getData(usuarioLogeado, new OnButtonClick() {
+            @Override
+            public void onItemClick(Usuario user) {
+                Intent gestionarRutas = new Intent(view.getContext(), GestionarRutas.class);
+                gestionarRutas.putExtra("idUserGestionar", user.getId());
+                startActivity(gestionarRutas);
+
+            }
+        }, new OnButtonClick() {
+            @Override
+            public void onItemClick(Usuario user) {
+                Intent editarUser = new Intent(view.getContext(), EditarUsuario.class);
+                editarUser.putExtra("idEditarUsuario",user.getId());
+            }
+        });
     }
 }

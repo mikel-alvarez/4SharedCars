@@ -1,6 +1,7 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -108,6 +109,22 @@ public class PaginaPrincipal extends AppCompatActivity {
                 int position = tab.getPosition();
 
                 viewPager.setCurrentItem(position);
+                switch (position){
+                    case 0:
+                        Reserva reserva = (Reserva) getSupportFragmentManager().getFragments().get(position);
+                        reserva.idUserLogeado(userLogeado.getId());
+
+                        break;
+                    case 1:
+                        MiUsuario miUsuario = (MiUsuario) getSupportFragmentManager().getFragments().get(position  );
+                        miUsuario.getUsuarioLogeado(userLogeado);
+                        break;
+                    case 2:
+                        Ranking ranking = (Ranking) getSupportFragmentManager().getFragments().get(position);
+                        ranking.getLogUser(userLogeado);
+                        break;
+                        //solucionar bug de no poser dar a dos tab
+                }
 
 
             }
@@ -163,7 +180,10 @@ public class PaginaPrincipal extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+
+
     }
+
 
 
 

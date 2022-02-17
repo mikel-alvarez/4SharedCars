@@ -127,6 +127,7 @@ public class Ruta extends RealmObject {
             Toast.makeText(view, "No cabe mas personas", Toast.LENGTH_SHORT).show();
             return;
         }
+
         this.pasajeros.add(pasajero);
     }
 

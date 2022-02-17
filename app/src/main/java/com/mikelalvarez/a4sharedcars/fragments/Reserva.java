@@ -1,6 +1,7 @@
 package com.mikelalvarez.a4sharedcars.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,11 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.activites.OtroUsuario;
+import com.mikelalvarez.a4sharedcars.activites.PaginaPrincipal;
 import com.mikelalvarez.a4sharedcars.adapters.RutaRecyclerAdapter;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
+import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import io.realm.Realm;
 import io.realm.RealmResults;
 
 
@@ -26,8 +32,9 @@ public class Reserva extends Fragment {
     RecyclerView recyclerView;
     View view;
     RealmResults<Ruta> rutas;
-    RutaRecyclerAdapter.OnItemClickListener imgClickListener;
-    RutaRecyclerAdapter.OnItemClickListener buttomListener;
+    RutaRecyclerAdapter.OnItemClickListener registroImgListener;
+    RutaRecyclerAdapter.OnItemClickListener registroBtnListener;
+    Realm realm;
 
     public Reserva() {
         // Required empty public constructor
@@ -41,7 +48,6 @@ public class Reserva extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        getData(rutas,imgClickListener,buttomListener);
 
     }
 
@@ -53,21 +59,51 @@ public class Reserva extends Fragment {
 
         recyclerView = view.findViewById(R.id.reservaRecycler);
 
+        realm = Realm.getDefaultInstance();
 
+        rutas = realm.where(Ruta.class).findAll();
+
+       registroImgListener = new RutaRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Ruta ruta, Usuario conductor) {
+                Intent otroUsuario = new Intent(view.getContext(), OtroUsuario.class);
+                otroUsuario.putExtra("idOtroUsuario",conductor.getId());
+                //otroUsuario.putExtra("idLogIn",userLogeado.getId());
+                startActivity(otroUsuario);
+            }
+        };
+        registroBtnListener = new RutaRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Ruta ruta, Usuario conductor) {
+             /**   if (conductor.getId() == userLogeado.getId()){
+                    Toast.makeText(view.getContext(), "No puedes unirte a tu propia ruta", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (conductor.getUsuariosVetados().contains(userLogeado.getId())){
+                    Toast.makeText(view.getContext(), "El conductor te tiene vetado", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (ruta.getPasajeros().contains(userLogeado.getId())){
+                    Toast.makeText(view.getContext(), "Ya estas dentro", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ruta.addPasajero(userLogeado.getId(), view);*/
+                Toast.makeText(view.getContext(), "Te has unido setisfatoriamente", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        putData(rutas,registroImgListener,registroBtnListener);
 
         return view;
     }
 
-    public void getData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener imgClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
-        this.rutas = rutas;
-        this.imgClickListener = imgClickListener;
-        this.buttomListener = buttomListener;
-    }
+
     private void putData(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener imgClickListener, RutaRecyclerAdapter.OnItemClickListener buttomListener){
         RutaRecyclerAdapter rutaRecyclerAdapter = new RutaRecyclerAdapter(rutas,imgClickListener,buttomListener);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false)));
         recyclerView.setAdapter(rutaRecyclerAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.HORIZONTAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
+        rutaRecyclerAdapter.notifyDataSetChanged();
     }
 }

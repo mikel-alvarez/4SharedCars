@@ -26,11 +26,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
     }
 
-    public void setFragmentReserva(RealmResults<Ruta> rutas, RutaRecyclerAdapter.OnItemClickListener reservaImgClickListener, RutaRecyclerAdapter.OnItemClickListener reservaButtomListener){
 
-        Reserva reserva = (Reserva) getItem(0);
-        reserva.getData(rutas,reservaImgClickListener,reservaButtomListener);
-    }
 
     @NonNull
     @Override

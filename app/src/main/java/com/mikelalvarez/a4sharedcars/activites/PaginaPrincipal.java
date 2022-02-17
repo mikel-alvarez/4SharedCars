@@ -66,19 +66,12 @@ public class PaginaPrincipal extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("USUARIO"));
         tabLayout.addTab(tabLayout.newTab().setText("RANKING"));
 
-        RutaRecyclerAdapter.OnItemClickListener registroImgListener = new RutaRecyclerAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Ruta ruta, Usuario conductor) {
-                otroUsuario.putExtra("idOtroUser",conductor.getId());
-                otroUsuario.putExtra("idLogIn",userLogeado.getId());
-                startActivity(otroUsuario);
-            }
-        };
+
 
         RankingRecycleAdapter.OnItemClickListener rankingImgClick = new RankingRecycleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Usuario user) {
-                otroUsuario.putExtra("idOtroUser",user.getId());
+                otroUsuario.putExtra("idOtroUsuario",user.getId());
                 otroUsuario.putExtra("idLogIn",user.getId());
                 startActivity(otroUsuario);
             }
@@ -115,10 +108,7 @@ public class PaginaPrincipal extends AppCompatActivity {
                 int position = tab.getPosition();
 
                 viewPager.setCurrentItem(position);
-                if (tab.getPosition() == 0){
-                    myTabsAdapter.setFragmentReserva(rutas,registroImgListener,registroBtnListener);
 
-                }
 
             }
 

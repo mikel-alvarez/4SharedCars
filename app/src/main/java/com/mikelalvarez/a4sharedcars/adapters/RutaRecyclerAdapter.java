@@ -85,7 +85,8 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
             fecha.setText(route.getFecha().toString());
             horaSalida.setText(route.getHora());
             ruta.setText(route.getRuta());
-            huecosLibres.setText(route.getPlazas() - route.getPasajeros().size() + 1);
+            int plazasLibre = route.getPlazas() - route.getPasajeros().size() + 1;
+            huecosLibres.setText(String.valueOf(plazasLibre));
 
             fotoPerfil.setOnClickListener(new View.OnClickListener() {
                 @Override

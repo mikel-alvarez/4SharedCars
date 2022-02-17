@@ -23,6 +23,7 @@
     <string name="registro">REGISTRO</string>
     <string name="repetir_contrase_a">Repetir Contraseña:</string>
     <string name="puntos">Puntos CO2</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 
 </resources>

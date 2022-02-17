@@ -37,6 +37,7 @@ public class AnadirRuta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_ruta);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         realm = Realm.getDefaultInstance();
         Bundle bundle = getIntent().getExtras();
         Integer id = bundle.getInt("idAñadirRuta");

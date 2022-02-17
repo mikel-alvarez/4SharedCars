@@ -23,9 +23,6 @@
             android:name=".activites.OtroUsuario"
             android:exported="false" />
         <activity
-            android:name=".activites.DetallesRuta"
-            android:exported="false" />
-        <activity
             android:name=".activites.PaginaPrincipal"
             android:exported="false" />
         <activity

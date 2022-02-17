@@ -67,18 +67,6 @@
         app:layout_constraintVertical_bias="0.533" />
 
     <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Puntuacion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <TextView
         android:id="@+id/txtPuntosOtroUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -92,22 +80,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOtroUsuario"
-        android:layout_width="384dp"
-        android:layout_height="225dp"
+        android:layout_width="411dp"
+        android:layout_height="307dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.891" />
-
-    <Button
-        android:id="@+id/btnVolverOtroUsuario"
-        android:layout_width="357dp"
-        android:layout_height="46dp"
-        android:text="Volver"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,7 +25,6 @@ public class OtroUsuario extends AppCompatActivity {
     TextView apellido;
     TextView puntos;
     RecyclerView recyclerview;
-    Button volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +41,6 @@ public class OtroUsuario extends AppCompatActivity {
         apellido = (TextView) findViewById(R.id.txtApellidoOtroUsuario);
         username = (TextView) findViewById(R.id.txtNombreUsuarioOtroUsuario);
         puntos = (TextView) findViewById(R.id.txtPuntosOtroUsuario);
-        volver = (Button) findViewById(R.id.btnVolverOtroUsuario);
         foto = (ImageView) findViewById(R.id.imgFotoOtroUsuario);
         recyclerview = (RecyclerView) findViewById(R.id.recyclerViewOtroUsuario);
         RutaOtroUsuarioAdapter adapter = new RutaOtroUsuarioAdapter(rutas);

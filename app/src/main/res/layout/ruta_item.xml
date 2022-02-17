@@ -67,7 +67,7 @@
 
             <TextView
                 android:id="@+id/txtRutaItem"
-                android:layout_width="99dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:text="Ruta" />
 

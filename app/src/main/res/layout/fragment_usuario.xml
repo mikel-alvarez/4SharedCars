@@ -44,7 +44,7 @@
 
     <Button
         android:id="@+id/btnEditarUsuario"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="EDITAR USUARIO"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,7 +82,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Mi Perfil"
+        android:text="MI PERFIL"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +105,7 @@
 
     <Button
         android:id="@+id/btnGestionarRutas"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="GESTIONAR MIS RUTAS"
         app:layout_constraintBottom_toBottomOf="parent"

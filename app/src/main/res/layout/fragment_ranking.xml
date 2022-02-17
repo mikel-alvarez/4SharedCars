@@ -6,12 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".fragments.Ranking">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewRanking"
-        android:layout_width="385dp"
-        android:layout_height="699dp"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CO2 RANKING"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycleViewRanking"
+        android:layout_width="417dp"
+        android:layout_height="612dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

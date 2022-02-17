@@ -20,6 +20,7 @@ public class EditarUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_usuario);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fotoPerfil = (ImageView) findViewById(R.id.imgPerfilEditarUsuario);
 

@@ -111,18 +111,21 @@ public class PaginaPrincipal extends AppCompatActivity {
                 viewPager.setCurrentItem(position);
                 switch (position){
                     case 0:
-                        Reserva reserva = (Reserva) getSupportFragmentManager().getFragments().get(position);
+                        Reserva reserva = (Reserva) myTabsAdapter.getItem(position);
                         reserva.idUserLogeado(userLogeado.getId());
 
                         break;
                     case 1:
-                        MiUsuario miUsuario = (MiUsuario) getSupportFragmentManager().getFragments().get(position  );
+                        MiUsuario miUsuario = (MiUsuario) myTabsAdapter.getItem(position);
                         miUsuario.getUsuarioLogeado(userLogeado);
                         break;
                     case 2:
-                        Ranking ranking = (Ranking) getSupportFragmentManager().getFragments().get(position);
+                        Ranking ranking = (Ranking) myTabsAdapter.getItem(position);
                         ranking.getLogUser(userLogeado);
                         break;
+                    default:
+                        break;
+
                         //solucionar bug de no poser dar a dos tab
                 }
 

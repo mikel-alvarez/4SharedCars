@@ -19,6 +19,7 @@ import io.realm.RealmResults;
 public class TabsAdapter extends FragmentStatePagerAdapter {
 
     private int numberOfTabs;
+    private Fragment[] fragment = {new Reserva(), new MiUsuario(), new Ranking()};
 
     public TabsAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -31,18 +32,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0:{
-                return new Reserva();
-            }
-            case 1:{
-                return new MiUsuario();
-            }
-            case 2:{
-                return new Ranking();
-            }
-            default:return null;
-        }
+        return fragment[position];
     }
 
     @Override

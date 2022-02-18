@@ -18,6 +18,7 @@ import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 import java.sql.BatchUpdateException;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import io.realm.Realm;
@@ -83,7 +84,8 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
             fotoPerfil.setImageResource(user.getImagen());
             nombre.setText(user.getNombre());
             apellido.setText(user.getApellido());
-            fecha.setText(route.getFecha().toString());
+            SimpleDateFormat formateadorFecha = new SimpleDateFormat("dd/MM/yyyy");
+            fecha.setText(formateadorFecha.format(route.getFecha()));
             horaSalida.setText(route.getHora());
             ruta.setText(route.getRuta());
             int plazasLibre = route.getPlazas() - route.getPasajeros().size() + 1;

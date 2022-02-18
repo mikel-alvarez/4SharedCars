@@ -1,44 +1,105 @@
 package com.mikelalvarez.a4sharedcars.adapters;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.mikelalvarez.a4sharedcars.fragments.MiUsuario;
+import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import org.w3c.dom.Text;
+
+import java.text.SimpleDateFormat;
+
+import io.realm.Realm;
 import io.realm.RealmResults;
 
 public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAdapter.GestinarRutasHolder>{{
 }
     RealmResults<Ruta> rutas;
-    OnButtonClickListener btnEliminar;
+    private Realm realm;
+    GestinarRutasHolder.OnButtonClickListener btnEliminar;
+    GestinarRutasHolder.OnButtonClickListener btnEditar;
+
+    public void GestionarRutasRecyclerAdapter(RealmResults<Ruta> listData, GestinarRutasHolder.OnButtonClickListener botonEliminar, GestinarRutasHolder.OnButtonClickListener botonEditar) {
+        this.rutas = listData;
+        this.btnEliminar = botonEliminar;
+        this.btnEditar = botonEditar;
+    }
 
     @NonNull
     @Override
     public GestinarRutasHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rutas_usuario_item,parent,false);
+        realm = Realm.getDefaultInstance();
+        return new GestinarRutasHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull GestinarRutasHolder holder, int position) {
-
+        Ruta ruta = rutas.get(position);
+        holder.assignData(ruta, btnEliminar,btnEditar);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return this.rutas.size();
     }
 
-    public interface OnButtonClickListener{
-    }
+    public static class GestinarRutasHolder extends RecyclerView.ViewHolder {
+        private TextView ruta;
+        private TextView fecha;
+        private TextView hora;
+        private TextView kms;
+        private TextView huecos;
+        private Button btnEliminar;
+        private Button btnEditar;
 
-    public class GestinarRutasHolder extends RecyclerView.ViewHolder {
         public GestinarRutasHolder(@NonNull View itemView) {
             super(itemView);
+            this.ruta = (TextView) itemView.findViewById(R.id.txtRutaUsuarioItem);
+            this.fecha = (TextView) itemView.findViewById(R.id.txtRutaUsuarioFechaItem);
+            this.hora = (TextView) itemView.findViewById(R.id.txtRutaUsuarioHoraItem);
+            this.kms = (TextView) itemView.findViewById(R.id.txtRutaUsuarioKmsItem);
+            this.huecos = (TextView) itemView.findViewById(R.id.txtRutaUsuarioPlazasItem);
+            this.btnEliminar = (Button) itemView.findViewById(R.id.btnEliminarRuta);
+            this.btnEditar = (Button) itemView.findViewById(R.id.btnModificarRuta);
+        }
+
+        public void assignData(Ruta route, OnButtonClickListener btnDelete, OnButtonClickListener btnEdit) {
+            ruta.setText(route.getRuta());
+            SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
+            fecha.setText(date.format(route.getFecha()));
+            hora.setText(route.getHora());
+            kms.setText((int) route.getKms());
+            int plazasLibre = route.getPlazas() - route.getPasajeros().size() + 1;
+            huecos.setText(String.valueOf(plazasLibre));
+
+            btnEliminar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnDelete.OnItemClickDelete();
+                }
+            });
+
+            btnEditar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    btnEdit.OnItemClickEdit(route);
+                }
+            });
+
+        }
+
+        public interface OnButtonClickListener{
+            public void OnItemClickDelete();
+            public void OnItemClickEdit(Ruta ruta);
         }
     }}
 

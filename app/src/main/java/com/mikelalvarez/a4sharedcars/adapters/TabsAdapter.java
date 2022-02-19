@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.fragments.MiUsuario;
 import com.mikelalvarez.a4sharedcars.fragments.Ranking;
 import com.mikelalvarez.a4sharedcars.fragments.Reserva;

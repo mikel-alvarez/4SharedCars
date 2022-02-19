@@ -11,9 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
-import com.mikelalvarez.a4sharedcars.model.Usuario;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 
@@ -24,13 +21,13 @@ public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAd
 }
     RealmResults<Ruta> rutas;
     private Realm realm;
-    GestinarRutasHolder.OnButtonClickListener btnEliminar;
-    GestinarRutasHolder.OnButtonClickListener btnEditar;
+    GestinarRutasHolder.OnButtonClickListener btnAction;
 
-    public void GestionarRutasRecyclerAdapter(RealmResults<Ruta> listData, GestinarRutasHolder.OnButtonClickListener botonEliminar, GestinarRutasHolder.OnButtonClickListener botonEditar) {
-        this.rutas = listData;
-        this.btnEliminar = botonEliminar;
-        this.btnEditar = botonEditar;
+
+
+    public GestionarRutasAdapter(RealmResults<Ruta> rutas, GestinarRutasHolder.OnButtonClickListener btnAction) {
+        this.rutas = rutas;
+        this.btnAction = btnAction;
     }
 
     @NonNull
@@ -44,7 +41,7 @@ public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAd
     @Override
     public void onBindViewHolder(@NonNull GestinarRutasHolder holder, int position) {
         Ruta ruta = rutas.get(position);
-        holder.assignData(ruta, btnEliminar,btnEditar);
+        holder.assignData(ruta, btnAction);
     }
 
     @Override
@@ -72,7 +69,7 @@ public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAd
             this.btnEditar = (Button) itemView.findViewById(R.id.btnModificarRuta);
         }
 
-        public void assignData(Ruta route, OnButtonClickListener btnDelete, OnButtonClickListener btnEdit) {
+        public void assignData(Ruta route, OnButtonClickListener btnAction) {
             ruta.setText(route.getRuta());
             SimpleDateFormat date = new SimpleDateFormat("dd/MM/yyyy");
             fecha.setText(date.format(route.getFecha()));
@@ -84,21 +81,21 @@ public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAd
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    btnDelete.OnItemClickDelete();
+                    btnAction.OnItemClickDelete(route);
                 }
             });
 
             btnEditar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    btnEdit.OnItemClickEdit(route);
+                    btnAction.OnItemClickEdit(route);
                 }
             });
 
         }
 
         public interface OnButtonClickListener{
-            public void OnItemClickDelete();
+            public void OnItemClickDelete(Ruta ruta);
             public void OnItemClickEdit(Ruta ruta);
         }
     }}

@@ -24,6 +24,7 @@
     <string name="repetir_contrase_a">Repetir Contraseña:</string>
     <string name="puntos">Puntos CO2</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="gestion_ruta_vacio">No tienes rutas si quieres una ruta dale a añadir ruta</string>
 
 
 </resources>

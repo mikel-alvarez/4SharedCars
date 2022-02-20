@@ -15,17 +15,18 @@ import com.mikelalvarez.a4sharedcars.model.Ruta;
 import java.text.SimpleDateFormat;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class GestionarRutasAdapter extends RecyclerView.Adapter<GestionarRutasAdapter.GestinarRutasHolder>{{
 }
-    RealmResults<Ruta> rutas;
+    RealmList<Ruta> rutas;
     private Realm realm;
     GestinarRutasHolder.OnButtonClickListener btnAction;
 
 
 
-    public GestionarRutasAdapter(RealmResults<Ruta> rutas, GestinarRutasHolder.OnButtonClickListener btnAction) {
+    public GestionarRutasAdapter(RealmList<Ruta> rutas, GestinarRutasHolder.OnButtonClickListener btnAction) {
         this.rutas = rutas;
         this.btnAction = btnAction;
     }

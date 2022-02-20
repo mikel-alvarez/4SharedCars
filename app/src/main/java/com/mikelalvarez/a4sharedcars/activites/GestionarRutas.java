@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.adapters.GestionarRutasAdapter;
+import com.mikelalvarez.a4sharedcars.databinding.RutasUsuarioItemBinding;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
@@ -17,6 +18,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import io.realm.Realm;
+import io.realm.RealmList;
 import io.realm.RealmResults;
 
 public class GestionarRutas extends AppCompatActivity {
@@ -29,6 +31,7 @@ public class GestionarRutas extends AppCompatActivity {
     RecyclerView recyclerView;
     Intent anadirRuta;
     RealmResults<Ruta> rutas;
+    RealmList<Ruta> rutasUsuario;
     TextView txtVacio;
     Ruta rutaClick;
 
@@ -45,13 +48,21 @@ public class GestionarRutas extends AppCompatActivity {
 
         anadirRuta = new Intent(this,AnadirRuta.class);
 
-        rutas = realm.where(Ruta.class).equalTo("conductor",usuarioLogeado.getId()).findAll();
-
         usuarioLogeado = realm.where(Usuario.class).equalTo("id",bundle.getInt("idUserGestionar")).findFirst();
+
+        rutas = realm.where(Ruta.class).findAll();
+
+        rutasUsuario = new RealmList<>();
+        for (Ruta ruta: rutas){
+            if (ruta.getConductor() == usuarioLogeado.getId()){
+                rutasUsuario.add(ruta);
+            }
+        }
+
 
         txtVacio = findViewById(R.id.txtVacioGestionarRutas);
         txtnombre = findViewById(R.id.txtNombreUsuarioRutas);
-        btnAñadirRuta = findViewById(R.id.btnAñadirAñadirRuta);
+        btnAñadirRuta = findViewById(R.id.btnNuevaRuta);
         recyclerView = findViewById(R.id.recyclerViewGestionRutas);
 
         txtnombre.setText(usuarioLogeado.getUsername());
@@ -71,7 +82,7 @@ public class GestionarRutas extends AppCompatActivity {
             txtVacio.setVisibility(View.INVISIBLE);
         }
 
-        GestionarRutasAdapter gestionarRutasAdapter = new GestionarRutasAdapter(rutas, new GestionarRutasAdapter.GestinarRutasHolder.OnButtonClickListener() {
+        GestionarRutasAdapter gestionarRutasAdapter = new GestionarRutasAdapter(rutasUsuario, new GestionarRutasAdapter.GestinarRutasHolder.OnButtonClickListener() {
             @Override
             public void OnItemClickDelete(Ruta ruta) {
                 rutaClick = ruta;

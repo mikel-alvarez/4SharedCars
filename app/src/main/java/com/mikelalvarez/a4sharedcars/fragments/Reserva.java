@@ -105,7 +105,7 @@ public class Reserva extends Fragment {
         RutaRecyclerAdapter rutaRecyclerAdapter = new RutaRecyclerAdapter(rutas,imgClickListener,buttomListener);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false)));
         recyclerView.setAdapter(rutaRecyclerAdapter);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         rutaRecyclerAdapter.notifyDataSetChanged();
     }

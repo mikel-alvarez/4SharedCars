@@ -4,54 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.AnadirRuta">
+    tools:context=".activites.EditarRuta">
 
     <EditText
-        android:id="@+id/txtPlazasAñadirRuta"
-        android:layout_width="122dp"
-        android:layout_height="51dp"
+        android:id="@+id/txtLugarSalidaEditarRuta"
+        android:layout_width="186dp"
+        android:layout_height="41dp"
         android:ems="10"
-        android:hint="Plazas"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
-
-    <EditText
-        android:id="@+id/txtHoraAñadirRuta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Hora"
-        android:inputType="time"
-        android:minHeight="48dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
-
-    <EditText
-        android:id="@+id/txtRutaAñadirRuta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
+        android:hint="Lugar Salida"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:hint="Ruta"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintVertical_bias="0.144" />
 
     <CalendarView
-        android:id="@+id/calendarioAñadirRuta"
+        android:id="@+id/calendarioEditarRuta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +36,7 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AÑADIR RUTA"
+        android:text="EDITAR RUTA"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,24 +45,52 @@
         app:layout_constraintVertical_bias="0.061" />
 
     <EditText
-        android:id="@+id/txtKmAñadirRuta"
+        android:id="@+id/txtKmEditarRuta"
         android:layout_width="115dp"
         android:layout_height="50dp"
         android:ems="10"
         android:hint="Kilómetros"
-        android:inputType="numberDecimal"
+        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.729"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:layout_constraintVertical_bias="0.295" />
+
+    <EditText
+        android:id="@+id/txtHoraEditarRuta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Hora"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.398" />
+
+    <EditText
+        android:id="@+id/txtPlazasEditarRuta"
+        android:layout_width="122dp"
+        android:layout_height="51dp"
+        android:ems="10"
+        android:hint="Plazas"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.295" />
 
     <Button
-        android:id="@+id/btnAñadirAñadirRuta"
+        android:id="@+id/btnCambiarEditarRuta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Añadir"
+        android:text="Editar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -99,4 +98,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.991" />
 
+    <EditText
+        android:id="@+id/txtLugarLlegadaEditarRuta"
+        android:layout_width="187dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="13dp"
+        android:ems="10"
+        android:hint="Lugar llegada"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtLugarSalidaEditarRuta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLugarSalidaEditarRuta" />
 </androidx.constraintlayout.widget.ConstraintLayout>

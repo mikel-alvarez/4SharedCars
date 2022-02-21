@@ -17,11 +17,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.databinding.ActivityMapsBinding;
 
+import io.realm.Realm;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
     private  MarkerOptions marker;
+    Realm realm;
 
     //todo:Darle una fincionalidad al mapa
     @Override

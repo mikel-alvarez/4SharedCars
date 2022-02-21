@@ -35,7 +35,7 @@ public class GestionarRutas extends AppCompatActivity {
     RealmList<Ruta> rutasUsuario;
     TextView txtVacio;
     Ruta rutaClick;
-
+    Intent editarRuta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,9 @@ public class GestionarRutas extends AppCompatActivity {
         bundle = getIntent().getExtras();
 
         realm = Realm.getDefaultInstance();
+
+        editarRuta = new Intent(this,EditarRuta.class);
+
 
         anadirRuta = new Intent(this,AnadirRuta.class);
 
@@ -92,7 +95,8 @@ public class GestionarRutas extends AppCompatActivity {
 
             @Override
             public void OnItemClickEdit(Ruta ruta) {
-                //todo: Hay que añadir actividad editar ruta
+                editarRuta.putExtra("idRuta",ruta.getId());
+                startActivity(editarRuta);
             }
         });
         recyclerView.setAdapter(gestionarRutasAdapter);

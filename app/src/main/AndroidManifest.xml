@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.4SharedCars">
         <activity
+            android:name=".activites.EditarRuta"
+            android:exported="false"
+            android:parentActivityName=".activites.GestionarRutas"/>
+        <activity
             android:name=".activites.Prueba"
             android:exported="false" />
         <!--
@@ -38,27 +42,27 @@
         <activity
             android:name=".activites.GestionarRutas"
             android:exported="true"
-            android:parentActivityName=".activites.PaginaPrincipal"/>
+            android:parentActivityName=".activites.PaginaPrincipal" />
         <activity
             android:name=".activites.EditarUsuario"
             android:exported="false"
-            android:parentActivityName=".activites.PaginaPrincipal"/>
+            android:parentActivityName=".activites.PaginaPrincipal" />
         <activity
             android:name=".activites.AnadirRuta"
             android:exported="false"
-            android:parentActivityName=".activites.GestionarRutas"/>
+            android:parentActivityName=".activites.GestionarRutas" />
         <activity
             android:name=".activites.OtroUsuario"
             android:exported="false"
-            android:parentActivityName=".activites.PaginaPrincipal"/>
+            android:parentActivityName=".activites.PaginaPrincipal" />
         <activity
             android:name=".activites.PaginaPrincipal"
             android:exported="false"
-            android:parentActivityName=".activites.IniciarSesion"/>
+            android:parentActivityName=".activites.IniciarSesion" />
         <activity
             android:name=".activites.Registro"
             android:exported="false"
-            android:parentActivityName=".activites.IniciarSesion"/>
+            android:parentActivityName=".activites.IniciarSesion" />
         <activity
             android:name=".activites.IniciarSesion"
             android:exported="true">

@@ -63,7 +63,7 @@ public class Ranking extends Fragment {
         RankingRecycleAdapter rankingRecyclerAdapter = new RankingRecycleAdapter(usuarios,imgClick);
         recyclerView.setLayoutManager((new LinearLayoutManager(view.getContext(),LinearLayoutManager.VERTICAL,false)));
         recyclerView.setAdapter(rankingRecyclerAdapter);
-        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.HORIZONTAL);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
     }
 

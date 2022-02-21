@@ -94,7 +94,7 @@ public class GestionarRutas extends AppCompatActivity {
                 //todo: Hay que añadir actividad editar ruta
             }
         });
-
+        recyclerView.setAdapter(gestionarRutasAdapter);
     }
     @Override
     public void onBackPressed() {
@@ -116,4 +116,5 @@ public class GestionarRutas extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
+
 }

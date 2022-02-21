@@ -1,10 +1,13 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,24 +58,26 @@ public class AnadirRuta extends AppCompatActivity {
         Ruta rut = new Ruta();
         rut.setConductor(conductor.getId());
 
+        fecha.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                LocalDate hoy = LocalDate.now();
+                if (month == hoy.getMonth().getValue() - 1 && (dayOfMonth - hoy.getDayOfMonth()  <= 6 || dayOfMonth -  hoy.getDayOfMonth() >= 0 )){
+                    rut.setFecha(new Date(hoy.getYear(), month, hoy.getDayOfMonth()));
+                }else{
+                    valid = false;
+                    Toast.makeText(AnadirRuta.this, "Fecha no valida", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         añadir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 rut.setRuta(rutaNombre.getText().toString());
                 rut.setHora(hora.getText().toString());
-
-                // Control de Fecha (mayor a la de hoy )
-                Date d = new Date(TimeUnit.SECONDS.toMillis(fecha.getDate()));
-                long miliseconds = System.currentTimeMillis();
-                Date hoy = new Date(miliseconds);
-                if (d.getMonth() == hoy.getMonth() && (hoy.getDay() - d.getDay() <= 6)){
-                    rut.setFecha(d);
-                }else{
-                    valid = false;
-                    Toast.makeText(AnadirRuta.this, "Fecha no valida", Toast.LENGTH_SHORT).show();
-
-                }
 
                 // Control de PLazas (int , +, <9)
                 try{
@@ -124,9 +129,13 @@ public class AnadirRuta extends AppCompatActivity {
 
                 // Si todos los controles OK agregar la ruta al realm
                 if (valid == true){
-                    realm.beginTransaction();
-                    realm.copyToRealm(rut);
-                    realm.commitTransaction();
+                    if (rut.getFecha() != null) {
+                        realm.beginTransaction();
+                        realm.copyToRealm(rut);
+                        realm.commitTransaction();
+                    }else{
+                        Toast.makeText(AnadirRuta.this, "Fecha no valida", Toast.LENGTH_SHORT).show();
+                    }
                 }else{
                     valid = true;
                 }

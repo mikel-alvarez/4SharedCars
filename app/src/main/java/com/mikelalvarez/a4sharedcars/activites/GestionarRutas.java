@@ -2,6 +2,7 @@ package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikelalvarez.a4sharedcars.R;
@@ -75,7 +76,7 @@ public class GestionarRutas extends AppCompatActivity {
             }
         });
 
-        if (rutas.isEmpty()){
+        if (rutasUsuario.isEmpty()){
             txtVacio.setVisibility(View.VISIBLE);
 
         } else {
@@ -95,6 +96,8 @@ public class GestionarRutas extends AppCompatActivity {
             }
         });
         recyclerView.setAdapter(gestionarRutasAdapter);
+        recyclerView.getAdapter().notifyDataSetChanged();
+
     }
     @Override
     public void onBackPressed() {
@@ -116,5 +119,4 @@ public class GestionarRutas extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
-
 }

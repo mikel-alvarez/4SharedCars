@@ -2,6 +2,7 @@ package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,11 +68,31 @@ public class EditarRuta extends AppCompatActivity {
                 }
                 if (txtSalida.getText() == txtLlegada.getText()){
                     Toast.makeText(EditarRuta.this, "Tine que ser un lugar diferente de salida y llegada", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if (9 > txtplazas.getText().toString()){
-
+                if (9 > Integer.parseInt(txtplazas.getText().toString())){
+                    Toast.makeText(EditarRuta.this, "No hay coches contantas plazas", Toast.LENGTH_SHORT).show();
+                    return;
                 }
-
+                String[] horaSeparada = txtHora.getText().toString().split(":");
+                if ( horaSeparada.length != 2  || Integer.parseInt(horaSeparada[0]) > 24 || Integer.parseInt(horaSeparada[1]) > 60) {
+                    Toast.makeText(EditarRuta.this, "Tiene que ser una hora valida", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (calendario.getDate() < new Date().getTime()){
+                    Toast.makeText(EditarRuta.this, "No puede ser para una fecha posterios a hoy", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                realm.beginTransaction();
+                rutaEditando.setRuta(txtSalida.getText() + "-" + txtLlegada.getText());
+                rutaEditando.setPlazas(Integer.parseInt(txtplazas.getText().toString()));
+                rutaEditando.setKms(Double.parseDouble(txtKM.getText().toString()));
+                rutaEditando.setHora(txtHora.getText().toString());
+                rutaEditando.setFecha(new Date(calendario.getDate()));
+                realm.commitTransaction();
+                Intent gestionarRuta =  new Intent(EditarRuta.this,GestionarRutas.class);
+                gestionarRuta.putExtra("idUserGestionar",rutaEditando.getConductor());
+                startActivity(gestionarRuta);
             }
         });
     }

@@ -93,13 +93,19 @@
 
                 <TextView
                     android:id="@+id/txtRutaItem"
-                    android:layout_width="200dp"
+                    android:layout_width="165dp"
                     android:layout_height="wrap_content"
                     android:text="Ruta" />
 
                 <TextView
-                    android:id="@+id/txtHuecosLibresItem"
+                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Huecos Libres: " />
+
+                <TextView
+                    android:id="@+id/txtHuecosLibresItem"
+                    android:layout_width="30dp"
                     android:layout_height="wrap_content"
                     android:text="Huecos Libres" />
             </LinearLayout>

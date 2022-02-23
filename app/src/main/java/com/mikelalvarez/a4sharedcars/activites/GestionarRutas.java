@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.adapters.GestionarRutasAdapter;
 import com.mikelalvarez.a4sharedcars.databinding.RutasUsuarioItemBinding;
@@ -36,6 +37,7 @@ public class GestionarRutas extends AppCompatActivity {
     TextView txtVacio;
     Ruta rutaClick;
     Intent editarRuta;
+    FloatingActionButton btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +54,8 @@ public class GestionarRutas extends AppCompatActivity {
         anadirRuta = new Intent(this,AnadirRuta.class);
 
         usuarioLogeado = realm.where(Usuario.class).equalTo("id",bundle.getInt("idUserGestionar")).findFirst();
+
+        btnVolver = findViewById(R.id.btnVolverGestionarRuta);
 
         rutas = realm.where(Ruta.class).findAll();
 
@@ -100,7 +104,14 @@ public class GestionarRutas extends AppCompatActivity {
         });
         recyclerView.setAdapter(gestionarRutasAdapter);
         recyclerView.getAdapter().notifyDataSetChanged();
-
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paginaPrincipal = new Intent(GestionarRutas.this,PaginaPrincipal.class);
+                paginaPrincipal.putExtra("UserId",usuarioLogeado.getId());
+                startActivity(paginaPrincipal);
+            }
+        });
     }
     @Override
     public void onBackPressed() {
@@ -122,4 +133,5 @@ public class GestionarRutas extends AppCompatActivity {
                 .setNegativeButton("No", null)
                 .show();
     }
+
 }

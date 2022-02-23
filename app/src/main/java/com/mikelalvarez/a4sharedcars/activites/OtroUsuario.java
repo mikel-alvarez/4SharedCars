@@ -3,12 +3,15 @@ package com.mikelalvarez.a4sharedcars.activites;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.adapters.RutaOtroUsuarioAdapter;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ public class OtroUsuario extends AppCompatActivity {
     TextView apellido;
     TextView puntos;
     RecyclerView recyclerview;
+    FloatingActionButton btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class OtroUsuario extends AppCompatActivity {
         realm = Realm.getDefaultInstance();
         Bundle bundle = getIntent().getExtras();
         Integer id = bundle.getInt("idOtroUsuario");
+        Integer idLogeado = bundle.getInt("idLogIn");
 
         Usuario usuario = realm.where(Usuario.class).equalTo("id",id).findFirst();
         RealmResults<Ruta> rutas = realm.where(Ruta.class).equalTo("conductor", id).findAll();
@@ -52,5 +57,14 @@ public class OtroUsuario extends AppCompatActivity {
         username.setText(usuario.getUsername());
         puntos.setText(usuario.getPuntosC02().toString());
         foto.setImageResource(usuario.getImagen());
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paginaPrincipal = new Intent(OtroUsuario.this,PaginaPrincipal.class);
+                paginaPrincipal.putExtra("UserId",idLogeado);
+                startActivity(paginaPrincipal);
+            }
+        });
     }
 }

@@ -1,6 +1,8 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
@@ -26,6 +28,8 @@ public class EditarUsuario extends AppCompatActivity {
     Button confirmar;
     Realm realm;
     RealmResults<Usuario> listaUsuarios;
+    FloatingActionButton btnVolver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,8 +74,14 @@ public class EditarUsuario extends AppCompatActivity {
             }
         });
 
-
-
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paginaPrincipal =  new Intent(EditarUsuario.this,PaginaPrincipal.class);
+                paginaPrincipal.putExtra("userId",usuarioId);
+                startActivity(paginaPrincipal);
+            }
+        });
 
     }
 }

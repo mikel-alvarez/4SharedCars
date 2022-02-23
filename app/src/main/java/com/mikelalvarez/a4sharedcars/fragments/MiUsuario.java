@@ -12,9 +12,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.activites.EditarUsuario;
 import com.mikelalvarez.a4sharedcars.activites.GestionarRutas;
+import com.mikelalvarez.a4sharedcars.activites.MapsActivity;
+import com.mikelalvarez.a4sharedcars.activites.PaginaPrincipal;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
 
@@ -34,6 +37,8 @@ public class MiUsuario extends Fragment {
     Usuario usuarioLogeado;
     OnButtonClick btnGestionClick;
     OnButtonClick btnEditarClick;
+    FloatingActionButton btnMapa;
+
     public MiUsuario() {
         // Required empty public constructor
     }
@@ -57,11 +62,16 @@ public class MiUsuario extends Fragment {
         btnEditar = view.findViewById(R.id.btnEditarUsuario);
         btnGestion = view.findViewById(R.id.btnGestionarRutas);
 
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapa =  new Intent(view.getContext(), MapsActivity.class);
+                startActivity(mapa);
+            }
+        });
 
         return view;
     }
-
-
 
     public void getData(Usuario user, OnButtonClick btnGestionClick,OnButtonClick btnEditarClick){
 
@@ -111,4 +121,6 @@ public class MiUsuario extends Fragment {
             }
         });
     }
+
+
 }

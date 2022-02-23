@@ -28,8 +28,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
 
     }
 
-
-
     @NonNull
     @Override
     public Fragment getItem(int position) {

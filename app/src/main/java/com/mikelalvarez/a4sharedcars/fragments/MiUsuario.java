@@ -107,6 +107,7 @@ public class MiUsuario extends Fragment {
             public void onItemClick(Usuario user) {
                 Intent editarUser = new Intent(view.getContext(), EditarUsuario.class);
                 editarUser.putExtra("idEditarUsuario",user.getId());
+                startActivity(editarUser);
             }
         });
     }

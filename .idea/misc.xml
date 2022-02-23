@@ -36,6 +36,8 @@
         <entry key="..\:/workspace_PMDM/4SharedCars/app/src/main/res/layout/activity_anadir_ruta.xml" value="0.2359375" />
         <entry key="..\:/workspace_PMDM/4SharedCars/app/src/main/res/layout/activity_editar_usuario.xml" value="0.25" />
         <entry key="..\:/workspace_PMDM/4SharedCars/app/src/main/res/layout/activity_gestionar_rutas.xml" value="0.25" />
+        <entry key="..\:/workspace_PMDM/4SharedCars/app/src/main/res/layout/fragment_usuario.xml" value="0.23020833333333332" />
+        <entry key="..\:/workspace_PMDM/4SharedCars/app/src/main/res/layout/rutas_usuario_item.xml" value="0.25" />
       </map>
     </option>
   </component>

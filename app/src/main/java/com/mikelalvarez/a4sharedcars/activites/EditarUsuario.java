@@ -41,7 +41,7 @@ public class EditarUsuario extends AppCompatActivity {
 
         confirmar = (Button) findViewById(R.id.btnConfirmarEditarUsuario);
         Bundle bundle = getIntent().getExtras();
-        String usuarioId = bundle.getString("idEditarUsuario");
+        int usuarioId = bundle.getInt("idEditarUsuario");
         realm = Realm.getDefaultInstance();
         user = realm.where(Usuario.class).equalTo("id", usuarioId).findFirst();
         listaUsuarios = realm.where(Usuario.class).findAll();
@@ -57,7 +57,7 @@ public class EditarUsuario extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario userChec = new Usuario(nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), Integer.parseInt(fotoPerfil.getResources().toString()));
+                Usuario userChec = new Usuario(nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
                 for (Usuario use : listaUsuarios){
                     if (use.getCorreo().equals(userChec.getCorreo()) || use.getTelefono().equals(userChec.getTelefono()) || use.getUsername().equals(userChec.getUsername()) && !use.getContraseña().equals(userChec.getContraseña())){
                         Toast.makeText(EditarUsuario.this, "Los datos inroducidos no son validos", Toast.LENGTH_SHORT).show();

@@ -110,4 +110,13 @@
         app:layout_constraintStart_toEndOf="@+id/txtLugarSalidaEditarRuta"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLugarSalidaEditarRuta" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnVueltaEditarRuta"
+        android:layout_width="53dp"
+        android:layout_height="51dp"
+        android:clickable="true"
+        app:srcCompat="?attr/actionModeCloseDrawable"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="31dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

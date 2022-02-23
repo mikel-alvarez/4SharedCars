@@ -10,6 +10,7 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 
@@ -31,12 +32,12 @@ public class EditarRuta extends AppCompatActivity {
     Realm realm;
     Bundle bundle;
     Ruta rutaEditando;
+    FloatingActionButton btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ruta);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         realm = Realm.getDefaultInstance();
 
@@ -47,7 +48,7 @@ public class EditarRuta extends AppCompatActivity {
         txtHora = findViewById(R.id.txtHoraEditarRuta);
         calendario = findViewById(R.id.calendarioEditarRuta);
         btnEditar = findViewById(R.id.btnEditarUsuario);
-
+        btnVolver = findViewById(R.id.btnVueltaEditarRuta);
         bundle = getIntent().getExtras();
 
         rutaEditando = realm.where(Ruta.class).equalTo("id",bundle.getInt("idRuta")).findFirst();
@@ -90,6 +91,15 @@ public class EditarRuta extends AppCompatActivity {
                 rutaEditando.setHora(txtHora.getText().toString());
                 rutaEditando.setFecha(new Date(calendario.getDate()));
                 realm.commitTransaction();
+                Intent gestionarRuta =  new Intent(EditarRuta.this,GestionarRutas.class);
+                gestionarRuta.putExtra("idUserGestionar",rutaEditando.getConductor());
+                startActivity(gestionarRuta);
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Intent gestionarRuta =  new Intent(EditarRuta.this,GestionarRutas.class);
                 gestionarRuta.putExtra("idUserGestionar",rutaEditando.getConductor());
                 startActivity(gestionarRuta);

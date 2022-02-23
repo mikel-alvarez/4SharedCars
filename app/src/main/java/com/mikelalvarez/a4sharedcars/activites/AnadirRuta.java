@@ -3,10 +3,13 @@ package com.mikelalvarez.a4sharedcars.activites;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Ruta;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -34,13 +37,13 @@ public class AnadirRuta extends AppCompatActivity {
     Usuario conductor;
     Boolean valid;
     Button añadir;
+    FloatingActionButton btnVolver;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anadir_ruta);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         realm = Realm.getDefaultInstance();
         Bundle bundle = getIntent().getExtras();
         Integer id = bundle.getInt("idAñadirRuta");
@@ -53,6 +56,7 @@ public class AnadirRuta extends AppCompatActivity {
         plazas = (EditText) findViewById(R.id.txtPlazasAñadirRuta);
         añadir = (Button) findViewById(R.id.btnAñadirAñadirRuta);
         valid = true;
+        btnVolver = findViewById(R.id.btnVolverAnadirRuta);
 
 
         Ruta rut = new Ruta();
@@ -69,6 +73,15 @@ public class AnadirRuta extends AppCompatActivity {
                     valid = false;
                     Toast.makeText(AnadirRuta.this, "Fecha no valida", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent gestionar = new Intent(AnadirRuta.this,GestionarRutas.class);
+                gestionar.putExtra("idUserGestionar",id);
+                startActivity(gestionar);
             }
         });
 

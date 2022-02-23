@@ -1,6 +1,8 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
@@ -27,12 +29,10 @@ public class Registro extends AppCompatActivity {
     EditText txtCorreo;
     Button btnAceptar;
     Button btnCancelar;
-
-
     ImageView imgIcono;
     Intent inicioSesion;
-
     Realm realm;
+    FloatingActionButton btnVolver;
 
 
     @Override

@@ -1,9 +1,12 @@
 package com.mikelalvarez.a4sharedcars.activites;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
 import com.mikelalvarez.a4sharedcars.model.Usuario;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +28,8 @@ public class EditarUsuario extends AppCompatActivity {
     Button confirmar;
     Realm realm;
     RealmResults<Usuario> listaUsuarios;
+    FloatingActionButton btnVolver;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,21 +63,25 @@ public class EditarUsuario extends AppCompatActivity {
             public void onClick(View v) {
                 Usuario userChec = new Usuario(nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
                 for (Usuario use : listaUsuarios){
-                    if (use.getCorreo().equals(userChec.getCorreo()) || use.getTelefono().equals(userChec.getTelefono()) || use.getUsername().equals(userChec.getUsername()) && !use.getContraseña().equals(userChec.getContraseña())){
-                        Toast.makeText(EditarUsuario.this, "Los datos inroducidos no son validos", Toast.LENGTH_SHORT).show();
-
-                    }else{
-                        realm.beginTransaction();
-                        realm.copyToRealmOrUpdate(userChec);
-                        realm.commitTransaction();
-                    }
+                    realm.beginTransaction();
+                    realm.copyToRealmOrUpdate(userChec);
+                    realm.commitTransaction();
                 }
 
+                Intent intent = new Intent(EditarUsuario.this,PaginaPrincipal.class);
+                intent.putExtra("UserId",user.getId());
+                startActivity(intent);
             }
         });
 
-
-
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent paginaPrincipal =  new Intent(EditarUsuario.this,PaginaPrincipal.class);
+                paginaPrincipal.putExtra("userId",usuarioId);
+                startActivity(paginaPrincipal);
+            }
+        });
 
     }
 }

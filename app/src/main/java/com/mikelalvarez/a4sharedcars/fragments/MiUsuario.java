@@ -37,7 +37,6 @@ public class MiUsuario extends Fragment {
     Usuario usuarioLogeado;
     OnButtonClick btnGestionClick;
     OnButtonClick btnEditarClick;
-    FloatingActionButton btnMapa;
 
     public MiUsuario() {
         // Required empty public constructor
@@ -62,13 +61,7 @@ public class MiUsuario extends Fragment {
         btnEditar = view.findViewById(R.id.btnEditarUsuario);
         btnGestion = view.findViewById(R.id.btnGestionarRutas);
 
-        btnMapa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent mapa =  new Intent(view.getContext(), MapsActivity.class);
-                startActivity(mapa);
-            }
-        });
+
 
         return view;
     }
@@ -96,6 +89,7 @@ public class MiUsuario extends Fragment {
                 btnEditarClick.onItemClick(user);
             }
         });
+
     }
 
     public interface OnButtonClick{

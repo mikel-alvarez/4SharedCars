@@ -27,7 +27,6 @@ public class IniciarSesion extends AppCompatActivity {
     Intent regintro;
     Intent paginaPrincipal;
     Realm realm;
-    Button btnPrueba;
     Intent prueba;
 
     @Override
@@ -35,8 +34,6 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
 
-        prueba = new Intent(this,Prueba.class);
-        btnPrueba = findViewById(R.id.btnPruebaInicio);
         txtContrasena = findViewById(R.id.txtContrasenaInicioSesion);
         txtUsuario = findViewById(R.id.txtNombreUsuarioInicioSesion);
         btnIniciarSesion = findViewById(R.id.btnInciarSesion);
@@ -99,12 +96,5 @@ public class IniciarSesion extends AppCompatActivity {
             }
         });
 
-        btnPrueba.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                prueba.putExtra("idUser","2");
-                startActivity(prueba);
-            }
-        });
     }
 }

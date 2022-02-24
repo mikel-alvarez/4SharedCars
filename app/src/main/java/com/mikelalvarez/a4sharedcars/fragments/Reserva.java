@@ -16,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mikelalvarez.a4sharedcars.R;
+import com.mikelalvarez.a4sharedcars.activites.MapsActivity;
 import com.mikelalvarez.a4sharedcars.activites.OtroUsuario;
 import com.mikelalvarez.a4sharedcars.activites.PaginaPrincipal;
 import com.mikelalvarez.a4sharedcars.adapters.RutaRecyclerAdapter;
@@ -35,6 +37,7 @@ public class Reserva extends Fragment {
     RutaRecyclerAdapter.OnItemClickListener registroImgListener;
     RutaRecyclerAdapter.OnItemClickListener registroBtnListener;
     Realm realm;
+    FloatingActionButton btnMapa;
     int userLogeadoId;
     public Reserva() {
         // Required empty public constructor
@@ -60,9 +63,13 @@ public class Reserva extends Fragment {
         recyclerView = view.findViewById(R.id.reservaRecycler);
 
 
+        btnMapa = view.findViewById(R.id.btnAccederAlMapa);
+
         realm = Realm.getDefaultInstance();
 
         rutas = realm.where(Ruta.class).findAll();
+
+
 
        registroImgListener = new RutaRecyclerAdapter.OnItemClickListener() {
             @Override
@@ -95,6 +102,14 @@ public class Reserva extends Fragment {
             }
         };
 
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mapa =  new Intent(view.getContext(), MapsActivity.class);
+                startActivity(mapa);
+            }
+        });
+
         putData(rutas,registroImgListener,registroBtnListener);
 
         return view;
@@ -108,6 +123,7 @@ public class Reserva extends Fragment {
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
         rutaRecyclerAdapter.notifyDataSetChanged();
+
     }
     public void idUserLogeado(int id){
         userLogeadoId = id;

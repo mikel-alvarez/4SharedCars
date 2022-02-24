@@ -51,7 +51,6 @@ public class Ranking extends Fragment {
             @Override
             public void onItemClick(Usuario user) {
                 otroUsuario.putExtra("idOtroUsuario",user.getId());
-                otroUsuario.putExtra("idLogIn",userLog.getId());
                 startActivity(otroUsuario);
             }
         });

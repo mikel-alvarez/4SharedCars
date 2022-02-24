@@ -50,6 +50,8 @@ public class OtroUsuario extends AppCompatActivity {
         recyclerview = (RecyclerView) findViewById(R.id.recyclerViewOtroUsuario);
         RutaOtroUsuarioAdapter adapter = new RutaOtroUsuarioAdapter(rutas);
 
+        btnVolver = findViewById(R.id.btnVolverOtroUsuario);
+
         recyclerview.setAdapter(adapter);
 
         nombre.setText(usuario.getNombre());

@@ -43,6 +43,8 @@ public class EditarUsuario extends AppCompatActivity {
         correo = (TextView) findViewById(R.id.txtCorreoEditarUsuario);
         telefono = (TextView) findViewById(R.id.txtPhoneEditarUsuario);
 
+        btnVolver = findViewById(R.id.btnVueltaEditarUusuario);
+
         confirmar = (Button) findViewById(R.id.btnConfirmarEditarUsuario);
         Bundle bundle = getIntent().getExtras();
         int usuarioId = bundle.getInt("idEditarUsuario");

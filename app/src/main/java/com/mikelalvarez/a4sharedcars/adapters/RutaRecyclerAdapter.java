@@ -102,6 +102,7 @@ public class RutaRecyclerAdapter extends RecyclerView.Adapter<RutaRecyclerAdapte
                 @Override
                 public void onClick(View view) {
                     buttonListener.onItemClick(route,user);
+                    notifyDataSetChanged();
                 }
             });
 

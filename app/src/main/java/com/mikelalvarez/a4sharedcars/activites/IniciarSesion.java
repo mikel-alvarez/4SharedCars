@@ -27,7 +27,6 @@ public class IniciarSesion extends AppCompatActivity {
     Intent regintro;
     Intent paginaPrincipal;
     Realm realm;
-    Intent prueba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

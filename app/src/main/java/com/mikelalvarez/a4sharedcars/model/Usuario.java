@@ -56,6 +56,20 @@ public class Usuario extends RealmObject {
         this.imagen = imagen;
     }
 
+    public Usuario(int id, String nombre, String apellido, String username, String contraseña, String correo, String telefono, Integer imagen) {
+        this.id = MyAplication.idUsuario.incrementAndGet();
+        inicializar();
+        this.puntuacionEstrellas = 3;
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.username = username;
+        this.contraseña = contraseña;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.imagen = imagen;
+    }
+
     public Usuario(int id, String nombre, String apellido, String username, String contraseña, String correo, Double puntosC02, Integer puntuacionEstrellas, String telefono, Integer imagen, RealmList<Integer> usuariosFavoritos, RealmList<Integer> usuariosVetados) {
         this.id = id;
         this.nombre = nombre;

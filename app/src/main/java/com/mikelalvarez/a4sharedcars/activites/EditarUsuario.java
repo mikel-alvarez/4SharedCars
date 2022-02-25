@@ -64,11 +64,10 @@ public class EditarUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Usuario userChec = new Usuario(nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
-                for (Usuario use : listaUsuarios){
-                    realm.beginTransaction();
-                    realm.copyToRealmOrUpdate(userChec);
-                    realm.commitTransaction();
-                }
+
+                realm.beginTransaction();
+                realm.copyToRealmOrUpdate(userChec);
+                realm.commitTransaction();
 
                 Intent intent = new Intent(EditarUsuario.this,PaginaPrincipal.class);
                 intent.putExtra("UserId",user.getId());

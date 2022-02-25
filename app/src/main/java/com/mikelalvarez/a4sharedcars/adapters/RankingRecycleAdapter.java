@@ -66,14 +66,15 @@ public class RankingRecycleAdapter extends RecyclerView.Adapter<RankingRecycleAd
         }
 
         public void assingData(Usuario user,OnItemClickListener imgClick){
+
+            if (user == null){
+                return;
+            }
             lblNombre.setText(user.getNombre());
             lblApellido.setText(user.getApellido());
-            if (user.getPuntosC02() == null){
-                lblPuntos.setText("0");
-            } else {
-                lblPuntos.setText(user.getPuntosC02().toString());
+            lblPuntos.setText(user.getPuntosC02().toString());
 
-            }
+
             imgAvatar.setImageResource(user.getImagen());
             imgAvatar.setOnClickListener(new View.OnClickListener() {
                 @Override

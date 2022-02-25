@@ -87,6 +87,7 @@ public class Usuario extends RealmObject {
     private void inicializar(){
         this.usuariosFavoritos = new RealmList<Integer>();
         this.usuariosVetados = new RealmList<Integer>();
+        this.puntosC02 = 0.0;
     }
 
     public String getCorreo() {

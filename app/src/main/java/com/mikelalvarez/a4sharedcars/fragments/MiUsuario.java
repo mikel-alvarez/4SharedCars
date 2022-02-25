@@ -68,12 +68,15 @@ public class MiUsuario extends Fragment {
 
     public void getData(Usuario user, OnButtonClick btnGestionClick,OnButtonClick btnEditarClick){
 
-        lblNombre.setText(user.getNombre());
-        lblApellido.setText(user.getApellido());
-        lblNombreUsuario.setText(user.getUsername());
-        lblCorreo.setText(user.getCorreo());
-        lblTelefono.setText(user.getTelefono());
-        lblPunto.setText(user.getPuntosC02().toString());
+        if (user != null){
+            lblNombre.setText(user.getNombre());
+            lblApellido.setText(user.getApellido());
+            lblNombreUsuario.setText(user.getUsername());
+            lblCorreo.setText(user.getCorreo());
+            lblTelefono.setText(user.getTelefono());
+            lblPunto.setText(user.getPuntosC02().toString());
+        }
+
 
         imgAvatar.setImageResource(user.getImagen());
 

@@ -44,6 +44,8 @@ public class GestionarRutas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_rutas);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         bundle = getIntent().getExtras();
 
         realm = Realm.getDefaultInstance();

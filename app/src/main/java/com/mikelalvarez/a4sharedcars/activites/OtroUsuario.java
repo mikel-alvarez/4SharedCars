@@ -39,6 +39,8 @@ public class OtroUsuario extends AppCompatActivity {
         Integer id = bundle.getInt("idOtroUsuario");
         Integer idLogeado = bundle.getInt("idLogIn");
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         Usuario usuario = realm.where(Usuario.class).equalTo("id",id).findFirst();
         RealmResults<Ruta> rutas = realm.where(Ruta.class).equalTo("conductor", id).findAll();
 

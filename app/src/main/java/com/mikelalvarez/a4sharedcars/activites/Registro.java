@@ -40,6 +40,8 @@ public class Registro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         realm = Realm.getDefaultInstance();
 
         txtApellido = findViewById(R.id.txtApellidoRegistro);

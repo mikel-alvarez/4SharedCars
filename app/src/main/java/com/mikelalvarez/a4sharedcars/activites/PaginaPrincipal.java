@@ -50,6 +50,8 @@ public class PaginaPrincipal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_principal);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         bundle = getIntent().getExtras();
 
         realm = Realm.getDefaultInstance();

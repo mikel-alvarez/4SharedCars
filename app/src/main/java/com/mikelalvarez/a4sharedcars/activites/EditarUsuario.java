@@ -37,6 +37,8 @@ public class EditarUsuario extends AppCompatActivity {
 
         fotoPerfil = (ImageView) findViewById(R.id.imgPerfilEditarUsuario);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         nombre = (TextView) findViewById(R.id.txtNombreEditarUsuario);
         apellido = (TextView) findViewById(R.id.txtApellidoEditarUsuario);
         nombreUsuario = (TextView) findViewById(R.id.txtNombreUsuarioEditarUsuario);

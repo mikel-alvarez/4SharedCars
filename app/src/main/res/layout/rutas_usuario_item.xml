@@ -6,8 +6,9 @@
 
     <TextView
         android:id="@+id/txtRutaUsuarioItem"
-        android:layout_width="match_parent"
+        android:layout_width="263dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="Ruta " />
 
     <LinearLayout
@@ -17,14 +18,16 @@
 
         <TextView
             android:id="@+id/txtRutaUsuarioFechaItem"
-            android:layout_width="70dp"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Fecha" />
 
         <TextView
             android:id="@+id/txtRutaUsuarioHoraItem"
-            android:layout_width="193dp"
+            android:layout_width="137dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Hora" />
 
         <Button
@@ -42,17 +45,35 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/txtRutaUsuarioKmsItem"
-            android:layout_width="97dp"
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="Km: " />
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioKmsItem"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Kilómetros" />
 
         <TextView
-            android:id="@+id/txtRutaUsuarioPlazasItem"
-            android:layout_width="108dp"
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
+            android:text="Huecos Libres: " />
+
+        <TextView
+            android:id="@+id/txtRutaUsuarioPlazasItem"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Plazas" />
 
         <Button

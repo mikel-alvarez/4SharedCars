@@ -45,7 +45,6 @@ public class IniciarSesion extends AppCompatActivity {
         paginaPrincipal = new Intent(this,PaginaPrincipal.class);
 
         realm = Realm.getDefaultInstance();
-
         if (realm.where(Usuario.class).findAll().isEmpty()){
             Utils.inicializarBaseDatosUsuario();
         }

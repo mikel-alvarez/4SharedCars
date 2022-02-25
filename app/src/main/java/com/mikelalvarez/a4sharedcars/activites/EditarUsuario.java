@@ -28,7 +28,6 @@ public class EditarUsuario extends AppCompatActivity {
     Button confirmar;
     Realm realm;
     RealmResults<Usuario> listaUsuarios;
-    FloatingActionButton btnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class EditarUsuario extends AppCompatActivity {
         correo = (TextView) findViewById(R.id.txtCorreoEditarUsuario);
         telefono = (TextView) findViewById(R.id.txtPhoneEditarUsuario);
 
-        btnVolver = findViewById(R.id.btnVueltaEditarUusuario);
 
         confirmar = (Button) findViewById(R.id.btnConfirmarEditarUsuario);
         Bundle bundle = getIntent().getExtras();
@@ -65,10 +63,14 @@ public class EditarUsuario extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario userChec = new Usuario(user.getId(), nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
+                Usuario userChec = realm.where(Usuario.class).equalTo("id",usuarioId).findFirst();
 
                 realm.beginTransaction();
-                realm.copyToRealmOrUpdate(userChec);
+                userChec.setNombre(nombre.getText().toString());
+                userChec.setApellido(apellido.getText().toString());
+                userChec.setUsername(nombreUsuario.getText().toString());
+                userChec.setCorreo(nombreUsuario.getText().toString());
+                userChec.setTelefono(telefono.getText().toString());
                 realm.commitTransaction();
 
                 Intent intent = new Intent(EditarUsuario.this,PaginaPrincipal.class);
@@ -77,14 +79,7 @@ public class EditarUsuario extends AppCompatActivity {
             }
         });
 
-        btnVolver.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent paginaPrincipal =  new Intent(EditarUsuario.this,PaginaPrincipal.class);
-                paginaPrincipal.putExtra("userId",usuarioId);
-                startActivity(paginaPrincipal);
-            }
-        });
+
 
     }
 }

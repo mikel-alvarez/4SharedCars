@@ -128,16 +128,10 @@ public class AnadirRuta extends AppCompatActivity {
                     if (rutas.size() > 2){
                         valid = false;
                         Toast.makeText(AnadirRuta.this, "Ya hay rutas planeadas", Toast.LENGTH_SHORT).show();
-                    }else{
+                    }else if (rutas.size() != 0){
                         if (rutas.first().getHora() == rut.getHora()){
                             valid = false;
                             Toast.makeText(AnadirRuta.this, "Ya hay rutas planeadas", Toast.LENGTH_SHORT).show();
-                        }else if (rutas.first().getRuta().toUpperCase() != "CUATROVIENTOS" && rut.getRuta().toUpperCase() != "CUATROVIENTOS"){
-                            valid = false;
-                            Toast.makeText(AnadirRuta.this, "Ya hay una ruta de ida", Toast.LENGTH_SHORT).show();
-                        }else if (rutas.first().getRuta().toUpperCase() != "CUATROVIENTOS" && rut.getRuta().toUpperCase() != "CUATROVIENTOS"){
-                            valid = false;
-                            Toast.makeText(AnadirRuta.this, "Ya hay una ruta de vuelta", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

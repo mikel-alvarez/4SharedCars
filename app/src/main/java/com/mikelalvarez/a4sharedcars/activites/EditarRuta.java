@@ -39,6 +39,8 @@ public class EditarRuta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editar_ruta);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         realm = Realm.getDefaultInstance();
 
         txtSalida = findViewById(R.id.txtLugarSalidaEditarRuta);

@@ -49,6 +49,8 @@ public class AnadirRuta extends AppCompatActivity {
         Integer id = bundle.getInt("idAñadirRuta");
         conductor = realm.where(Usuario.class).equalTo("id",id).findFirst();
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         fecha = (CalendarView) findViewById(R.id.calendarioAñadirRuta);
         rutaNombre = (EditText) findViewById(R.id.txtRutaAñadirRuta);
         km = (EditText) findViewById(R.id.txtKmAñadirRuta);

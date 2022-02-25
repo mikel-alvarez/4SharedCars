@@ -33,6 +33,8 @@ public class IniciarSesion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_iniciar_sesion);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
         txtContrasena = findViewById(R.id.txtContrasenaInicioSesion);
         txtUsuario = findViewById(R.id.txtNombreUsuarioInicioSesion);
         btnIniciarSesion = findViewById(R.id.btnInciarSesion);

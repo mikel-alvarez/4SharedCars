@@ -49,6 +49,14 @@ public class Ranking extends Fragment {
         RealmResults<Usuario> usuarios = realm.where(Usuario.class).findAll().sort("puntosC02") ;
         otroUsuario = new Intent(view.getContext(), OtroUsuario.class);
 
+        getData(usuarios, new RankingRecycleAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Usuario user) {
+                otroUsuario.putExtra("idOtroUsuario",user.getId());
+                otroUsuario.putExtra("idLogIn",userLog.getId());
+                startActivity(otroUsuario);
+            }
+        });
 
         return view;
     }
@@ -59,14 +67,7 @@ public class Ranking extends Fragment {
         recyclerView.setAdapter(rankingRecyclerAdapter);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(view.getContext(),DividerItemDecoration.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        getData(usuarios, new RankingRecycleAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Usuario user) {
-                otroUsuario.putExtra("idOtroUsuario",user.getId());
-                otroUsuario.putExtra("idLogIn",userLog.getId());
-                startActivity(otroUsuario);
-            }
-        });
+
     }
 
     public void getLogUser(Usuario userLog){

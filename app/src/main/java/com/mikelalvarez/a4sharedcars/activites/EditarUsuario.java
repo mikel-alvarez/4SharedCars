@@ -65,7 +65,7 @@ public class EditarUsuario extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario userChec = new Usuario(nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
+                Usuario userChec = new Usuario(user.getId(), nombre.getText().toString(), apellido.getText().toString(), nombreUsuario.getText().toString(), user.getContraseña(),correo.getText().toString(), telefono.getText().toString(), user.getImagen());
 
                 realm.beginTransaction();
                 realm.copyToRealmOrUpdate(userChec);
